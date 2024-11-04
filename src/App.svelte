@@ -2,12 +2,10 @@
     import ElectricityData from "./ElectricityData.svelte";
 </script>
 
-
 <main>
+    <h1>Electricity prices</h1>
     <ElectricityData/>
 </main>
-
-
 
 <style>
     .logo {

@@ -1,5 +1,8 @@
 <script>
     import { onMount } from 'svelte';
+    import Histogram from "./Histogram.svelte";
+    let dataaa = [10, 20, 30, 25, 15];
+    let labels = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
 
     let data = null;
     let error = null;
@@ -13,6 +16,7 @@
             data = await response.json();
         } catch (err) {
             error = err.message;
+
         }
     });
 </script>
@@ -20,7 +24,8 @@
 {#if error}
     <p>Error: {error}</p>
 {:else if data}
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <Histogram {dataaa} {labels} />
+<!--    <pre>{JSON.stringify(data, null, 2)}</pre>-->
 {:else}
     <p>Loading...</p>
 {/if}
