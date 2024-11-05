@@ -20,9 +20,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "@types/npm": "^7.19.3",
-    "apexcharts": "^4.0.0",
-    "chart.js": "^4.4.6",
-    "svelte-apexcharts": "^1.0.2"
+    "@types/npm": "^7.19.3"
   }
 }
