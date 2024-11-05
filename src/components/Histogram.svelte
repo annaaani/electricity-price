@@ -4,7 +4,11 @@
     import {convertPriceMWhToSKWh} from "../utils/convertPriceMWhToSKWh.js";
 
     export let data;
+    // TODO : time below
+    // TODO : price on hower
+    // todo: map bottom same place
 </script>
+
 
 <div class="barchart">
 

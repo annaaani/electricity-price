@@ -1,5 +1,5 @@
 <script lang="ts">
-    let countries: String[] =  ["ee","lv", "lt", "fi"];
+    let countries: String[] = ["ee", "lv", "lt", "fi"];
     export let local: string = countries[0];
 </script>
 

@@ -1,4 +1,4 @@
- export function convertTimestamp(timestamp:Number): String {
+ export function convertTimestamp(timestamp:Number): string {
 
      const date = new Date(timestamp * 1000);
 

@@ -1,11 +1,11 @@
 <script lang="ts">
-    export let time: String;
-    export let price: Number;
+    export let time: string;
+    export let price: number;
 </script>
 
 <div class="bar-container">
-    <div class="box" style="height: {price * 1}em;"></div>
     <p>{time}</p>
+    <div class="box" style="height: {price * 1.1}em;"></div>
 </div>
 
 <style>
