@@ -4,9 +4,6 @@
     import {convertPriceMWhToSKWh} from "../utils/convertPriceMWhToSKWh.js";
 
     export let data;
-    // TODO : time below
-    // TODO : price on hower
-    // todo: map bottom same place
 </script>
 
 
@@ -24,10 +21,12 @@
         display: flex;
         flex-direction: row;
         gap: 0.5em;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: flex-end;
         flex-wrap: wrap;
-        height: 100%;
+        height: 600px;
         overflow: hidden;
+        padding: 2em;
+        background-color: rgba(240,240,240,0.5);
     }
 </style>
