@@ -1,6 +1,7 @@
 <script lang="ts">
     import {convertTimestamp} from "../utils/convertTimestamp";
     import Bar from './Bar.svelte'
+    import {convertPriceMWhToSKWh} from "../utils/convertPriceMWhToSKWh.js";
 
     export let data;
 </script>
@@ -11,7 +12,7 @@
 {#each data as d}
     <p>
         {convertTimestamp(d.timestamp)}
-        {d.price}
+        {convertPriceMWhToSKWh(d.price)}
     </p>
 {/each}
 

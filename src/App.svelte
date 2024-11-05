@@ -15,10 +15,10 @@
     $: {
         data = null;
         error = null;
-
+// Todo: fetch update, generate todays data by default
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dashboard.elering.ee/api/nps/price?start=2024-11-03T22:00:00.000Z&end=2024-11-04T21:59:59.999Z');
+                const response = await fetch('https://dashboard.elering.ee/api/nps/price?start=2024-11-04T22:00:00.000Z&end=2024-11-05T21:59:59.999Z');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
