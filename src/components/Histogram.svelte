@@ -23,7 +23,7 @@
         justify-content: flex-start;
         align-items: flex-end;
         flex-wrap: wrap;
-        height: 200px;
+        height: 100%;
         overflow: hidden;
     }
 </style>

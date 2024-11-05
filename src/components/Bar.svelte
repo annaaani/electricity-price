@@ -4,7 +4,7 @@
 </script>
 
 <div class="bar-container">
-    <div class="box" style="height: {price}em;"></div>
+    <div class="box" style="height: {price * 1}em;"></div>
     <p>{time}</p>
 </div>
 
@@ -15,7 +15,7 @@
         flex-direction: column-reverse;
         align-items: center;
         justify-content: flex-end;
-        width: 3em;
+        width: 1em;
     }
 
     .box {
