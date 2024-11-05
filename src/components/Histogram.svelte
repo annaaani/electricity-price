@@ -6,19 +6,24 @@
     export let data;
 </script>
 
+<div class="barchart">
 
-<!--<pre>{JSON.stringify(data, null, 2)}</pre>-->
+    {#each data as d}
+        <Bar time={convertTimestamp(d.timestamp)} price={convertPriceMWhToSKWh(d.price)}/>
 
-{#each data as d}
-    <p>
-        {convertTimestamp(d.timestamp)}
-        {convertPriceMWhToSKWh(d.price)}
-    </p>
-{/each}
+    {/each}
+</div>
 
-
-<Bar />
 
 <style>
-
+    .barchart {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        justify-content: flex-start;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        height: 200px;
+        overflow: hidden;
+    }
 </style>

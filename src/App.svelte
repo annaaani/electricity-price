@@ -42,7 +42,6 @@
         <LocalSwitcher bind:local={local}/>
         <Histogram {data}/>
 
-<!--        <pre>{JSON.stringify(data, null, 2)}</pre>-->
     {:else}
         <p>Loading...</p>
     {/if}
