@@ -1,6 +1,7 @@
 <script lang="ts">
     import LocalSwitcher from "./components/LocalSwitcher.svelte";
     import DateComponent from "./components/DateComponent.svelte";
+    import Histogram from "./components/Histogram.svelte";
 
     interface PriceData {
         timestamp: number;
@@ -39,9 +40,9 @@
         <h1>Electricity prices</h1>
         <DateComponent/>
         <LocalSwitcher bind:local={local}/>
-        <!--        <Histogram {}>-->
+        <Histogram {data}/>
 
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+<!--        <pre>{JSON.stringify(data, null, 2)}</pre>-->
     {:else}
         <p>Loading...</p>
     {/if}
