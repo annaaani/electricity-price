@@ -1,6 +1,6 @@
 <script lang="ts">
-    export let time: string;
-    export let price: number;
+    export let time: string
+    export let price: number
 </script>
 
 <div class="bar-container">
@@ -24,7 +24,7 @@
         width: 100%;
         background-color: #ddd;
         border-radius: 0.5em;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease
     }
 
     .box:hover {
