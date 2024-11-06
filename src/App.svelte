@@ -22,9 +22,18 @@
         eleringDayPrices = await fetchData(date)
     }
 
+    function getHourlyPrices(eleringDayPrices: Record<Country, PriceData[]> | null, country:Country) {
+        return eleringDayPrices?.[country].map(p => convertPriceMWhToSKWh(p.price));
+    }
+
+    function getHours(eleringDayPrices: Record<Country, PriceData[]> | null, country:Country) {
+        return eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp));
+    }
+
     $: load(date)
-    $: hourlyPrices = eleringDayPrices?.[country].map(p => convertPriceMWhToSKWh(p.price))
-    $: hours = eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp))
+    $: hourlyPrices = getHourlyPrices(eleringDayPrices, country)
+    $: hours = getHours(eleringDayPrices, country)
+
 </script>
 
 <main>
@@ -33,7 +42,7 @@
     {:else if eleringDayPrices}
 
         <h1>Electricity prices</h1>
-<!--        <DateComponent/>-->
+        <DateComponent/>
         <CountrySwitcher bind:country={country}/>
         <Histogram {hourlyPrices} {hours}/>
 

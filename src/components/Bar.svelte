@@ -5,10 +5,9 @@
 
 <div class="bar-container">
     <p>{time}</p>
-    <div class="box" style="height: {price * 1.1}em;"></div>
+    <div class="box" style="height: {price + 0.1}em;"></div>
     <p class="price"> {price} c/KWh </p>
 </div>
-
 
 <style>
     .bar-container {
@@ -18,13 +17,14 @@
         justify-content: flex-end;
         width: 1em;
         position: relative;
+        margin-top: 2em;
     }
 
     .box {
         width: 100%;
         background-color: #ddd;
         border-radius: 0.5em;
-        transition: background-color 0.3s ease
+        transition: background-color 0.3s ease;
     }
 
     .box:hover {
@@ -45,5 +45,4 @@
         opacity: 1;
         z-index: 1;
     }
-
 </style>

@@ -1,10 +1,9 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
-    import {convertTimestamp} from "../utils/convertTimestamp";
-    import {convertPriceMWhToSKWh} from "../utils/convertPriceMWhToSKWh.js";
+    export let hourlyPrices
+    export let hours
 
-    export let hourlyPrices; // TODO: type & name
-    export let hours; // TODO: type & name
+    // TODO: create a function to get highest of the day to adjust the barchart height
 </script>
 
 <div class="barchart">
