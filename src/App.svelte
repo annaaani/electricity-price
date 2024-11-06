@@ -12,41 +12,57 @@
         price: number
     }
 
-    let date = new Date().toISOString().split("T")[0]
-    let country: Country = countries[0]
+    let date = $state(new Date().toISOString().split("T")[0])
+    let country: Country = $state(countries[0])
 
-    let eleringDayPrices: Record<Country, PriceData[]> | null = null
+    let eleringDayPrices: Record<Country, PriceData[]> | null = $state(null)
     let error: string | null
 
     async function load(date: string) {
         eleringDayPrices = await fetchData(date)
     }
 
-    function getHourlyPrices(eleringDayPrices: Record<Country, PriceData[]> | null, country:Country) {
+    function getHourlyPrices(eleringDayPrices: Record<Country, PriceData[]> | null, country: Country) {
         return eleringDayPrices?.[country].map(p => convertPriceMWhToSKWh(p.price));
     }
 
-    function getHours(eleringDayPrices: Record<Country, PriceData[]> | null, country:Country) {
+    function getHours(eleringDayPrices: Record<Country, PriceData[]> | null, country: Country) {
         return eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp));
     }
 
-    $: load(date)
-    $: hourlyPrices = getHourlyPrices(eleringDayPrices, country)
-    $: hours = getHours(eleringDayPrices, country)
+    $effect(() => {
+        console.log(fetch, window.fetch, fetch === window.fetch)
+        load(date)
+    })
 
+    let hourlyPrices = $derived(getHourlyPrices(eleringDayPrices, country))
+    let hours = $derived(getHours(eleringDayPrices, country))
 </script>
 
 <main>
     {#if error}
         <p>Error: {error}</p>
-    {:else if eleringDayPrices}
 
+    {:else if eleringDayPrices}
         <h1>Electricity prices</h1>
-        <DateComponent/>
-        <CountrySwitcher bind:country={country}/>
+        <div class="optionsBar">
+            <div>
+                <CountrySwitcher bind:country/>
+            </div>
+            <DateComponent bind:date/>
+        </div>
         <Histogram {hourlyPrices} {hours}/>
 
     {:else}
         <p>Loading...</p>
     {/if}
 </main>
+
+<style>
+    .optionsBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 1em;
+    }
+</style>

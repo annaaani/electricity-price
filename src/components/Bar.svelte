@@ -1,7 +1,8 @@
 <script lang="ts">
     export let time: string
     export let price: number
-    // todo: negative price
+    // TODO: negative price
+    // TODO: height price from em to %
 </script>
 
 <div class="bar-container">

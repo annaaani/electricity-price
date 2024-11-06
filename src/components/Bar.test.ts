@@ -5,10 +5,8 @@ import Bar from './Bar.svelte';
 describe('Bar.svelte', () => {
     test('renders time and price correctly', async () => {
         const { getByText } = render(Bar, {
-            props: {
-                time: '12:00',
-                price: 10,
-            },
+            time: '12:00',
+            price: 10,
         });
 
         getByText('12:00');
