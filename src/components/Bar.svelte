@@ -1,11 +1,12 @@
 <script lang="ts">
     export let time: string
     export let price: number
+    // todo: negative price
 </script>
 
 <div class="bar-container">
     <p>{time}</p>
-    <div class="box" style="height: {price + 0.1}em;"></div>
+    <div class="box" style="height: {price}em;"></div>
     <p class="price"> {price} c/KWh </p>
 </div>
 
@@ -45,4 +46,5 @@
         opacity: 1;
         z-index: 1;
     }
+
 </style>

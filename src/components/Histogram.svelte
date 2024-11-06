@@ -12,7 +12,6 @@
                 time={hours[i]}
                 price={hp}
         />
-
     {/each}
 </div>
 

@@ -1,6 +1,6 @@
-import { render, fireEvent } from '@testing-library/svelte';
+import { render } from '@testing-library/svelte';
 import {expect, test, describe} from 'vitest'
-import Bar from '../components/Bar.svelte';
+import Bar from './Bar.svelte';
 
 describe('Bar.svelte', () => {
     test('renders time and price correctly', async () => {
@@ -25,6 +25,6 @@ describe('Bar.svelte', () => {
 
         const box = container.querySelector('.box');
 
-        expect(box).toHaveStyle('height: 11em');
+        expect(box).toHaveStyle('height: 10em');
     });
 });
