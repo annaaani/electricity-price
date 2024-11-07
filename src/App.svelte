@@ -31,7 +31,6 @@
     }
 
     $effect(() => {
-        console.log(fetch, window.fetch, fetch === window.fetch)
         load(date)
     })
 
