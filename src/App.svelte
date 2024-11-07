@@ -12,7 +12,7 @@
         price: number
     }
 
-    let date = $state(new Date().toISOString().split("T")[0])
+    let date = $state(new Date().toISOString().split("T")[0]) // TODO: reuse today
     let country: Country = $state(countries[0])
 
     let eleringDayPrices: Record<Country, PriceData[]> | null = $state(null)
@@ -50,8 +50,9 @@
             </div>
             <DateComponent bind:date/>
         </div>
-        <Histogram {hourlyPrices} {hours}/>
-
+        {#if hourlyPrices && hours}
+            <Histogram {hourlyPrices} {hours}/>
+        {/if}
     {:else}
         <p>Loading...</p>
     {/if}

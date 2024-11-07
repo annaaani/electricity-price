@@ -4,23 +4,50 @@ import App from './App.svelte';
 import {tick} from "svelte";
 
 describe('App.svelte', () => {
-    const url = 'https://dashboard.elering.ee/api/nps/price?start=2024-11-06T22:00:00.000Z&end=2024-11-07T21:59:00.000Z'
+    const eleringResponse = {
+        data: {
+            ee: [
+                {
+                    "timestamp": 1730844000,
+                    "price": 55
+                },
+                {
+                    "timestamp": 1730847600,
+                    "price": 4.55
+                }
+            ]
+        }
+    }
 
-    test('shows loading while data is loading', async () => {
-        vi.spyOn(window, 'fetch')
+    test('shows loading while data is loading and H1 after successful load', async () => {
+        vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response)
+
         const {getByText} = render(App)
         expect(getByText('Loading...')).toBeInTheDocument()
 
-        vi.fn().mockResolvedValue({
-            ok: true,
-            json: async () => ({data: []})
-        });
-
         await tick()
-        expect(fetch).toHaveBeenCalledWith(url)
+        expect(fetch).toHaveBeenCalled()
 
         await waitFor(() => {
             expect(getByText('Electricity prices')).toBeInTheDocument();
+        });
+    });
+
+    test('shows loading while data is loading and H1 after successful load', async () => {
+        vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response)
+
+        const {getByText} = render(App)
+        await tick()
+
+        await waitFor(() => {
+            expect(getByText('00')).toBeInTheDocument();
+            expect(getByText('01')).toBeInTheDocument();
+            expect(getByText('5.5 c/KWh')).toBeInTheDocument();
+            expect(getByText('0.46 c/KWh')).toBeInTheDocument();
+            expect(getByText('ee')).toBeInTheDocument();
+            expect(getByText('lv')).toBeInTheDocument();
+            expect(getByText('lt')).toBeInTheDocument();
+            expect(getByText('fi')).toBeInTheDocument();
         });
     });
 })
