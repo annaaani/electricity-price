@@ -7,6 +7,7 @@ describe('DateComponent.svelte', () => {
     test('on load shows today`s date', async () => {
         render(DateComponent)
         const {component} = render(DateComponent)
-        expect(component.date).to.eq(new Date().toISOString().split("T")[0])
+        // @ts-ignore
+        expect(new Date().toISOString().split("T")[0]).to.eq(component.date)
     });
 })

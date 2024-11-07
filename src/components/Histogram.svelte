@@ -1,7 +1,6 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
-    export let hourlyPrices
-    export let hours
+    let {hourlyPrices, hours} : {hourlyPrices: number[], hours: string[]} = $props()
 
     // TODO: create a function to get highest of the day to adjust the barchart height
 </script>

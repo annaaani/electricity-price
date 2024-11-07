@@ -1,7 +1,9 @@
 <script lang="ts">
-    const today = new Date().toISOString().split("T")[0]
+    import {today} from "../utils/todayDate";
     let {date = $bindable(today)} = $props()
-    export {date}
+
+    // TODO: breaks tests (app -> dateComponent)
+    // export {date}
 </script>
 
-<input type="date" bind:value={date} max={today} data-testid="dateInput">
+<input type="date" bind:value={date} max={today}>
