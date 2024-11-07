@@ -3,12 +3,10 @@ import {expect, test, describe, vi} from 'vitest'
 import DateComponent from './DateComponent.svelte';
 
 describe('DateComponent.svelte', () => {
+
     test('on load shows today`s date', async () => {
         render(DateComponent)
-
-
-        // // dateInput
-        // await screen.findByTestId(`dateInput`)
-        // expect(inputField).toHaveDisplayValue(Todays date)))
+        const {component} = render(DateComponent)
+        expect(component.date).to.eq(new Date().toISOString().split("T")[0])
     });
 })
