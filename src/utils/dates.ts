@@ -20,7 +20,26 @@ export async function nextDate(date: ISODate) {
     return toISODate(d)
 }
 
-export async function checkMaxDate (date: ISODate){
-    console.log(maxDate)
-    return date > maxDate
+export function getMaxDate(): ISODate {
+
+    const d = (new Date().setDate(new Date().getDate()+1))
+    console.log(".."+date)
+    console.log(" . . "+ maxDate)
+
+    if (date > maxDate){
+        return true
+    }else
+        return false
+
+
+export function checkMaxDate(date: ISODate): boolean{
+
+    const d = (new Date().setDate(new Date().getDate()+1))
+    console.log(".."+date)
+    console.log(" . . "+ maxDate)
+
+    if (date > maxDate){
+        return true
+    }else
+    return false
 }
