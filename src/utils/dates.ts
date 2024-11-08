@@ -4,6 +4,9 @@ export const today: ISODate = toISODate(new Date())
 // @ts-ignore
 export const maxDate: ISODate = await nextDate(today)
 
+// TODO: tests
+
+
 export function toISODate(date: Date) {
     return date.toISOString().split("T")[0] as ISODate
 }

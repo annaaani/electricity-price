@@ -9,9 +9,8 @@ describe('Bar.svelte', () => {
             price: 10,
         });
 
-        getByText('12:00');
-        getByText('10 c/KWh');
-        // todo EXPECT
+        expect(getByText('12:00')).toBeInTheDocument();
+        expect(getByText('10 c/KWh')).toBeInTheDocument();
     });
 
     test('sets the correct height based on price', async () => {

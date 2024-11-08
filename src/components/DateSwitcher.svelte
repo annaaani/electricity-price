@@ -3,6 +3,7 @@
 
     let {date = $bindable(today)}: { date: ISODate } = $props()
     export {date as boundDate}
+
 </script>
 <div>
     <button onclick={async () => date = await prevDate(date)}>&#60;&#60;</button>
@@ -12,7 +13,6 @@
     {:else}
         <button disabled>&#62;&#62;</button>
     {/if}
-
 </div>
 
 <style>

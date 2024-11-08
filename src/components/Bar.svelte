@@ -7,7 +7,7 @@
 
 <div class="bar-container">
     <p>{time}</p>
-    <div class="box" style="height: {price}em;"></div>
+    <div class="box" style="height:{price}em;"></div>
     <p class="price"> {price} c/KWh </p>
 </div>
 
