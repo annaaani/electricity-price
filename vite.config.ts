@@ -10,9 +10,14 @@ export default defineConfig({
             resolveBrowser: true,
         }
     )],
+    server: {
+        proxy: {
+            '/api': 'https://dashboard.elering.ee',
+        }
+    },
     test: {
         environment: 'jsdom',
         setupFiles: ['./src/vitest-setup.ts'],
-    },
+    }
 })
 

@@ -6,14 +6,14 @@
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
     import {convertTimestamp} from "./utils/convertTimestamp";
     import {fetchData} from "./utils/loader";
-    import {today, type Date} from "./utils/todayDate";
+    import {today, type ISODate} from "./utils/dates";
 
     interface PriceData {
         timestamp: number
         price: number
     }
 
-    let date: Date = $state(today)
+    let date: ISODate = $state(today)
     let country: Country = $state(countries[0])
 
     let eleringDayPrices: Record<Country, PriceData[]> | null = $state(null)
