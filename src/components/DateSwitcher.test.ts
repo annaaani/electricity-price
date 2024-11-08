@@ -9,7 +9,6 @@ describe('DateSwitcher.svelte', () => {
         const {component} = render(DateSwitcher)
         expect(component.boundDate).to.eq(today)
     })
-
     test('can switch to previous date', async () => {
         const {container} = render(DateSwitcher, {date: '2024-11-07'})
         await fireEvent.click(container.querySelector('button')!)

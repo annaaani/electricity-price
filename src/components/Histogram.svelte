@@ -1,12 +1,11 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
 
-    let {hourlyPrices, hours}: { hourlyPrices: number[], hours: string[] } = $props()
+    let {hourlyPrices, hours, dailyMax}: { hourlyPrices: number[], hours: string[], dailyMax: number } = $props()
     // TODO: tests
-    // TODO: create a function to get highest of the day to adjust the barchart height
 </script>
 
-<div class="barchart">
+<div class="barchart" style="height:{dailyMax*1.2}em;">
     {#each hourlyPrices as hp, i}
         <Bar
                 time={hours[i]}
@@ -23,9 +22,9 @@
         justify-content: center;
         align-items: flex-end;
         flex-wrap: wrap;
-        min-height: 600px;
+        height: 600px;
         overflow: hidden;
-        padding: 2em;
+        padding: 2em 0 1em;
         background-color: rgba(240, 240, 240, 0.5);
     }
 </style>

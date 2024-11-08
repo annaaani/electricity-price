@@ -2,7 +2,6 @@
     export let time: string
     export let price: number
     // TODO: negative price
-    // TODO: height price from em to %
 </script>
 
 <div class="bar-container">

@@ -31,12 +31,20 @@
         return eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp));
     }
 
+    function getOverallMaxPrice(eleringDayPrices : Record<Country, PriceData[]> | null): number{
+        if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
+        const allPrices = Object.values(eleringDayPrices)
+            .flatMap(countryPrices => countryPrices.map(p => convertPriceMWhToSKWh(p.price)));
+        return Math.max(...allPrices);
+    }
+
     $effect(() => {
         load(date)
     })
 
     let hourlyPrices = $derived(getHourlyPrices(eleringDayPrices, country))
     let hours = $derived(getHours(eleringDayPrices, country))
+    let dailyMax = $derived(getOverallMaxPrice(eleringDayPrices))
 </script>
 
 <main>
@@ -52,7 +60,7 @@
             <DateSwitcher bind:date/>
         </div>
         {#if hourlyPrices && hours}
-            <Histogram {hourlyPrices} {hours}/>
+            <Histogram {hourlyPrices} {hours} {dailyMax}/>
         {/if}
     {:else}
         <p>Loading...</p>
