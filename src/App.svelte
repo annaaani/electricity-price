@@ -31,7 +31,7 @@
         return eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp));
     }
 
-    function getOverallMaxPrice(eleringDayPrices : Record<Country, PriceData[]> | null): number{
+    function getOverallMaxPrice(eleringDayPrices: Record<Country, PriceData[]> | null): number {
         if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
         const allPrices = Object.values(eleringDayPrices)
             .flatMap(countryPrices => countryPrices.map(p => convertPriceMWhToSKWh(p.price)));
