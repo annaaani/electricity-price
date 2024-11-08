@@ -19,7 +19,8 @@ export async function nextDate(date: ISODate) {
     d.setDate(d.getDate() + 1);
     return toISODate(d)
 }
-//
-// export async function checkMaxDate (date: ISODate){
-//     return date > maxDate;
-// }
+
+export async function checkMaxDate (date: ISODate){
+    console.log(maxDate)
+    return date > maxDate
+}

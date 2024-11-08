@@ -1,12 +1,12 @@
 <script lang="ts">
     import CountrySwitcher from "./components/CountrySwitcher.svelte"
-    import DateComponent from "./components/DateComponent.svelte"
+    import DateSwitcher from "./components/DateSwitcher.svelte"
     import Histogram from "./components/Histogram.svelte"
     import {countries, type Country} from "./utils/countries"
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
     import {convertTimestamp} from "./utils/convertTimestamp";
     import {fetchData} from "./utils/loader";
-    import {today, type ISODate} from "./utils/dates";
+    import {type ISODate, today} from "./utils/dates";
 
     interface PriceData {
         timestamp: number
@@ -49,7 +49,7 @@
             <div>
                 <CountrySwitcher bind:country/>
             </div>
-            <DateComponent bind:date/>
+            <DateSwitcher bind:date/>
         </div>
         {#if hourlyPrices && hours}
             <Histogram {hourlyPrices} {hours}/>

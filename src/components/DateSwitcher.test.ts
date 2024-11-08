@@ -1,12 +1,12 @@
 import {render, fireEvent, waitFor} from '@testing-library/svelte';
 import {expect, test, describe, vi} from 'vitest'
-import DateComponent from './DateComponent.svelte';
 import {today} from "../utils/dates";
+import DateSwitcher from "./DateSwitcher.svelte";
 
-describe('DateComponent.svelte', () => {
+describe('DateSwitcher.svelte', () => {
     test('on load shows today`s date', async () => {
-        render(DateComponent)
-        const {component} = render(DateComponent)
+        render(DateSwitcher)
+        const {component} = render(DateSwitcher)
         expect(component.boundDate).to.eq(today)
     })
 
