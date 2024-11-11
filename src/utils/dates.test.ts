@@ -3,7 +3,7 @@ import {checkMaxDate, today} from './dates';
 
 describe('dates.ts', () => {
     test('should return true if date is before maxDate', async () => {
-        const dateBeforeMax = '2024-11-09' as const;
+        const dateBeforeMax = '2024-11-09';
         expect(checkMaxDate(dateBeforeMax)).to.eq(false)
     })
 

@@ -11,7 +11,7 @@
                 name="countryOption"
                 value={countryCode}
                 bind:group={country}
-        />
+        >
         {countryCode}
     </label>
 {/each}

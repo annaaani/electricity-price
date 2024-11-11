@@ -3,18 +3,19 @@ import {describe, expect, test} from 'vitest'
 import CountrySwitcher from "./CountrySwitcher.svelte";
 
 describe('CountrySwitcher.svelte', () => {
-    test('check that `ee` is activated on load', async () => {
-        // @ts-ignore
-        const {container} = render(CountrySwitcher, 'ee')
-        let countryInput = container.querySelector('input');
-        expect(countryInput).toBeInTheDocument();
-        expect(countryInput!.value).toBe('ee')
+    test('`ee` is activated by default', async () => {
+        const {container} = render(CountrySwitcher)
+        let countryInput = container.querySelector('input:checked') as HTMLInputElement
+        expect(countryInput.value).toBe('ee')
     })
-    test('check another country is active after switch', async () => {
-        // @ts-ignore
-        const {container} = render(CountrySwitcher, 'ee')
-        let countryInput = container.querySelector('input');
-        await fireEvent.input(countryInput!, {target: {value: 'lv'}});
-        expect(countryInput!.value).toBe('lv')
+
+    test('can switch country', async () => {
+        const {container} = render(CountrySwitcher, {country: 'fi'})
+        const defaultRadio = container.querySelector('input:checked') as HTMLInputElement
+        expect(defaultRadio.value).toBe('fi')
+
+        let lvRadio = container.querySelector('input[value=lv]') as HTMLInputElement
+        await fireEvent.click(lvRadio)
+        expect(lvRadio.checked).toBe(true)
     })
 })
