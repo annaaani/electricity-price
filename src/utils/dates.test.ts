@@ -1,10 +1,16 @@
 import {describe, expect, test} from 'vitest';
-import {checkMaxDate, today} from './dates';
+import {checkMaxDate, type ISODate, today} from './dates';
 
 describe('dates.ts', () => {
     test('should return true if date is before maxDate', async () => {
-        const dateBeforeMax = '2024-11-09';
-        expect(checkMaxDate(dateBeforeMax)).to.eq(false)
+        const dateBeforeMax = '2024-11-10';
+        expect(checkMaxDate(dateBeforeMax)).to.eq(true)
+    })
+
+    test('should return false if date is before maxDate', async () => {
+        const nextYear = new Date().getFullYear()+1;
+        const dateAfterMax = `${nextYear}-11-12`;
+        expect(checkMaxDate(<ISODate>dateAfterMax)).to.eq(false)
     })
 
     test('today should be the current date in ISODate format', () => {

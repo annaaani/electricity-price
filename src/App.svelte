@@ -4,7 +4,6 @@
     import Histogram from "./components/Histogram.svelte"
     import {countries, type Country} from "./utils/countries"
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
-    import {convertTimestamp} from "./utils/convertTimestamp";
     import {fetchData} from "./utils/loader";
     import {type ISODate, today} from "./utils/dates";
 
@@ -27,10 +26,6 @@
         return eleringDayPrices?.[country].map(p => convertPriceMWhToSKWh(p.price));
     }
 
-    function getHours(eleringDayPrices: Record<Country, PriceData[]> | null, country: Country) {
-        return eleringDayPrices?.[country].map(p => convertTimestamp(p.timestamp));
-    }
-
     function getOverallMaxPrice(eleringDayPrices: Record<Country, PriceData[]> | null): number {
         if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
         const allPrices = Object.values(eleringDayPrices)
@@ -43,7 +38,6 @@
     })
 
     let hourlyPrices = $derived(getHourlyPrices(eleringDayPrices, country))
-    let hours = $derived(getHours(eleringDayPrices, country))
     let dailyMax = $derived(getOverallMaxPrice(eleringDayPrices))
 </script>
 
@@ -53,14 +47,14 @@
 
     {:else if eleringDayPrices}
         <h1>Electricity prices</h1>
-        <div class="optionsBar">
+        <div class="options-bar">
             <div>
                 <CountrySwitcher bind:country/>
             </div>
             <DateSwitcher bind:date/>
         </div>
-        {#if hourlyPrices && hours}
-            <Histogram {hourlyPrices} {hours} {dailyMax}/>
+        {#if hourlyPrices}
+            <Histogram {hourlyPrices} {dailyMax}/>
         {/if}
     {:else}
         <p>Loading...</p>
@@ -68,7 +62,7 @@
 </main>
 
 <style>
-    .optionsBar {
+    .options-bar {
         display: flex;
         flex-direction: row;
         justify-content: space-between;

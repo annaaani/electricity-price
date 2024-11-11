@@ -40,10 +40,10 @@ describe('App.svelte', () => {
         await tick()
 
         await waitFor(() => {
-            expect(getByText('00')).toBeInTheDocument();
-            expect(getByText('01')).toBeInTheDocument();
-            expect(getByText('5.5 c/KWh')).toBeInTheDocument();
-            expect(getByText('0.46 c/KWh')).toBeInTheDocument();
+            expect(getByText('0')).toBeInTheDocument();
+            expect(getByText('1')).toBeInTheDocument();
+            expect(getByText('5.5 c/kWh')).toBeInTheDocument();
+            expect(getByText('0.46 c/kWh')).toBeInTheDocument();
             expect(getByText('ee')).toBeInTheDocument();
             expect(getByText('lv')).toBeInTheDocument();
             expect(getByText('lt')).toBeInTheDocument();

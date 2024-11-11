@@ -6,24 +6,22 @@ describe('Bar', () => {
     test('renders time and price correctly', async () => {
         const {getByText} = render(Bar, {
             dailyMax: 20,
-            time: '12:00',
+            time: 12,
             price: 10,
         });
 
-        expect(getByText('12:00')).toBeInTheDocument();
-        expect(getByText('10 c/KWh')).toBeInTheDocument();
+        expect(getByText('12')).toBeInTheDocument();
+        expect(getByText('10 c/kWh')).toBeInTheDocument();
     });
 
     test('sets the correct height based on price', async () => {
         const {container} = render(Bar, {
             dailyMax: 20,
-            time: '12:00',
+            time: 12,
             price: 10,
         });
-
-        const box = container.querySelector('.box');
-
-        // TODO: re-calc height based on %
-        expect(box).toHaveStyle('height: 10em');
+        const box = container.querySelector('.bar');
+        const expectedHeight = 10 / 20 * 100
+        expect(box).toHaveStyle(`height: ${expectedHeight}%`);
     });
 });

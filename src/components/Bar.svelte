@@ -1,7 +1,5 @@
 <script lang="ts">
-    export let time: string
-    export let price: number
-    export let dailyMax: number
+    let {time, price, dailyMax}: { time: number, price: number, dailyMax: number } = $props()
     // TODO: negative price
 </script>
 

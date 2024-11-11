@@ -2,7 +2,7 @@
   "ee": [
     {
       "timestamp": 1730844000,
-      "price": 55
+      "price": -55
     },
     {
       "timestamp": 1730847600,
@@ -22,7 +22,7 @@
     },
     {
       "timestamp": 1730862000,
-      "price": 7.38
+      "price": -7.38
     },
     {
       "timestamp": 1730865600,
@@ -50,7 +50,7 @@
     },
     {
       "timestamp": 1730887200,
-      "price": 71.34
+      "price": -71.34
     },
     {
       "timestamp": 1730890800,
@@ -78,7 +78,7 @@
     },
     {
       "timestamp": 1730912400,
-      "price": 234.78
+      "price": -234.78
     },
     {
       "timestamp": 1730916000,
@@ -94,13 +94,13 @@
     },
     {
       "timestamp": 1730926800,
-      "price": 25.87
+      "price": -25.87
     }
   ],
   "fi": [
     {
       "timestamp": 1730844000,
-      "price": 6.71
+      "price": -6.71
     },
     {
       "timestamp": 1730847600,
@@ -198,7 +198,7 @@
   "lv": [
     {
       "timestamp": 1730844000,
-      "price": 55
+      "price": -55
     },
     {
       "timestamp": 1730847600,
@@ -296,7 +296,7 @@
   "lt": [
     {
       "timestamp": 1730844000,
-      "price": 55
+      "price": -55
     },
     {
       "timestamp": 1730847600,

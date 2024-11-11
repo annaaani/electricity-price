@@ -1,3 +1,5 @@
+// import eleringDummyData from '../assets/eleringDummyData.json'
+
 export function fetchUrl(date: string) {
     const start = new Date(date + 'T00:00')
     const end = new Date(date + 'T23:59')

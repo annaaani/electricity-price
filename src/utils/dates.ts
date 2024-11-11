@@ -1,7 +1,6 @@
 export type ISODate = `${number}-${number}-${number}`
 
 export const today: ISODate = toISODate(new Date())
-// @ts-ignore
 export const maxDate: ISODate = await nextDate(today)
 
 export function toISODate(date: Date) {
