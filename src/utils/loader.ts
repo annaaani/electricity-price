@@ -1,4 +1,4 @@
-// import eleringDummyData from '../assets/eleringDummyData.json'
+import eleringDummyData from '../assets/eleringDummyData.json'
 
 export function fetchUrl(date: string) {
     const start = new Date(date + 'T00:00')
@@ -14,4 +14,5 @@ export async function fetchData(date: string) {
     }
     const jsonData = await response.json()
     return jsonData.data
+    // return eleringDummyData
 }

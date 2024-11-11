@@ -1,8 +1,9 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
-    // TODO: make dailyMax to $derived!!
-    let {hourlyPrices, dailyMax}: { hourlyPrices: number[], dailyMax: number } = $props()
-    // TODO: tests
+    import type {ISODate} from "../utils/dates";
+    // TODO: make dailyMax to $derived!!??
+    let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate} = $props()
+    // TODO: tests for lines
     const priceLines = [
         {label: `${Math.round(dailyMax)} c/kWh`, top: '0%'},
         {label: `${Math.round(0.75 * dailyMax)} c/kWh`, top: '25%'},
@@ -27,6 +28,7 @@
                     time={i}
                     price={hp}
                     {dailyMax}
+                    {date}
             />
         {/each}
     </div>

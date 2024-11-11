@@ -8,6 +8,7 @@ describe('Bar', () => {
             dailyMax: 20,
             time: 12,
             price: 10,
+            date: `${2024}-${10}-${5}`
         });
 
         expect(getByText('12')).toBeInTheDocument();
@@ -19,6 +20,7 @@ describe('Bar', () => {
             dailyMax: 20,
             time: 12,
             price: 10,
+            date: `${2024}-${10}-${5}`
         });
         const box = container.querySelector('.bar');
         const expectedHeight = 10 / 20 * 100

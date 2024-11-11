@@ -1,9 +1,14 @@
 <script lang="ts">
-    let {time, price, dailyMax}: { time: number, price: number, dailyMax: number } = $props()
+    import {type ISODate, today} from "../utils/dates";
+
+    let {time, price, dailyMax, date}: { time: number, price: number, dailyMax: number, date: ISODate } = $props()
     // TODO: negative price
+    const currentHour = new Date().getHours();
+    const isCurrentHour = time === currentHour;
+    const isToday = date === today;
 </script>
 
-<div class="bar" style="height: {price / dailyMax * 100}%">
+<div class="bar {isCurrentHour && isToday ? 'current-hour' : ''}" style="height: {price / dailyMax * 100}%">
     <p class="hour">{time}</p>
     <p class="price">{price} c/kWh</p>
 </div>
@@ -36,6 +41,10 @@
     .bar:hover .price {
         opacity: 1;
         z-index: 10;
+    }
+
+    .current-hour {
+        background-color: #bbb;
     }
 
 </style>

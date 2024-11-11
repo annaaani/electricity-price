@@ -54,7 +54,7 @@
             <DateSwitcher bind:date/>
         </div>
         {#if hourlyPrices}
-            <Histogram {hourlyPrices} {dailyMax}/>
+            <Histogram {hourlyPrices} {dailyMax} {date}/>
         {/if}
     {:else}
         <p>Loading...</p>
