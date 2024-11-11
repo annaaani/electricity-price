@@ -37,6 +37,7 @@
         load(date)
     })
 
+
     let hourlyPrices = $derived(getHourlyPrices(eleringDayPrices, country))
     let dailyMax = $derived(getOverallMaxPrice(eleringDayPrices))
 </script>

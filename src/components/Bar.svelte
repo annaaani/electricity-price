@@ -4,14 +4,23 @@
     let {time, price, dailyMax, date}: { time: number, price: number, dailyMax: number, date: ISODate } = $props()
     // TODO: negative price
     const currentHour = new Date().getHours();
-    const isCurrentHour = time === currentHour;
-    const isToday = date === today;
+    const isCurrentHour = $derived(time === currentHour);
+    // TODO: NOT WORKING
+    const isToday = $derived(date === today);
 </script>
 
-<div class="bar {isCurrentHour && isToday ? 'current-hour' : ''}" style="height: {price / dailyMax * 100}%">
+{#if price > 0}
+    <div class="bar {isCurrentHour && isToday ? 'current-hour' : ''}" style="height: {price / dailyMax * 100}%">
+        <p class="hour">{time}</p>
+        <p class="price">{price} c/kWh</p>
+    </div>
+{:else}
+    <div></div><div class="bar negative {isCurrentHour && isToday ? 'current-hour' : ''}" style="height: -{price / dailyMax * 100}%">
     <p class="hour">{time}</p>
     <p class="price">{price} c/kWh</p>
 </div>
+{/if}
+
 
 <style>
     .bar {
@@ -45,6 +54,12 @@
 
     .current-hour {
         background-color: #bbb;
+    }
+
+    .negative {
+        background-color: red;
+        z-index: 1000;
+        overflow: visible;
     }
 
 </style>

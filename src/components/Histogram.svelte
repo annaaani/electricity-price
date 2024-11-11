@@ -4,16 +4,18 @@
     // TODO: make dailyMax to $derived!!??
     let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate} = $props()
     // TODO: tests for lines
-    const priceLines = [
+    const priceLines =  $derived([
         {label: `${Math.round(dailyMax)} c/kWh`, top: '0%'},
         {label: `${Math.round(0.75 * dailyMax)} c/kWh`, top: '25%'},
         {label: `${Math.round(0.5 * dailyMax)} c/kWh`, top: '50%'},
         {label: `${Math.round(0.25 * dailyMax)} c/kWh`, top: '75%'},
         {label: `0 c/kWh`, top: '100%'}
-    ]
+    ])
+
 </script>
 
 <div class="outer-container">
+<!--    <div class="baseline"></div>-->
     <div class="barchart">
         {#each priceLines as line}
             <div class="priceLineBlock" style="top: {line.top};">
