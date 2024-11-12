@@ -31,7 +31,7 @@
         width: 100%;
         background-color: #ddd;
         border-radius: 0.5em 0.5em 0 0;
-        transition: background-color 0.3s ease;
+        transition: height 1s ease-in-out, background-color 0.3s ease;
     }
 
     .hour {

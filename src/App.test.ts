@@ -36,11 +36,11 @@ describe('App.svelte', () => {
     test('shows loading while data is loading and H1 after successful load', async () => {
         vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response)
 
-        const {getByText} = render(App)
+        const {getByText, container} = render(App)
         await tick()
 
         await waitFor(() => {
-            expect(getByText('0')).toBeInTheDocument();
+            expect(container.querySelector('.hour')?.textContent).to.equal('0');
             expect(getByText('1')).toBeInTheDocument();
             expect(getByText('5.5 c/kWh')).toBeInTheDocument();
             expect(getByText('0.46 c/kWh')).toBeInTheDocument();

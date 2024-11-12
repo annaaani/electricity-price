@@ -1,17 +1,17 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
     import type {ISODate} from "../utils/dates";
+    import {roundUpToNearest5} from "../utils/roundUpToNearest5";
 
     let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate } = $props()
-    import {roundUpToNearest5} from "../utils/roundUpToNearest5";
     // TODO: tests for lines
     // TODO: add transitions to bars
     const priceLines = $derived([
         {label: `${roundUpToNearest5(dailyMax)}`, top: '0%'},
         {label: `${0.8 * roundUpToNearest5(dailyMax)}`, top: '20%'},
-        {label: `${0.6 *roundUpToNearest5(dailyMax)}`, top: '40%'},
-        {label: `${0.4 *roundUpToNearest5(dailyMax)}`, top: '60%'},
-        {label: `${0.2 *roundUpToNearest5(dailyMax)}`, top: '80%'},
+        {label: `${0.6 * roundUpToNearest5(dailyMax)}`, top: '40%'},
+        {label: `${0.4 * roundUpToNearest5(dailyMax)}`, top: '60%'},
+        {label: `${0.2 * roundUpToNearest5(dailyMax)}`, top: '80%'},
         {label: `0`, top: '100%'}
     ])
 
@@ -76,7 +76,8 @@
         margin-left: -1.5em;
         margin-top: -0.8em;
     }
-    .conversion-heading{
+
+    .conversion-heading {
         padding-top: 0.2em;
         text-align: center;
     }
