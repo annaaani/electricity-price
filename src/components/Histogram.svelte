@@ -2,20 +2,22 @@
     import Bar from './Bar.svelte'
     import type {ISODate} from "../utils/dates";
 
-    let {hourlyPrices, dailyMax, dailyMin, date}: { hourlyPrices: number[], dailyMax: number, dailyMin: number, date: ISODate } = $props()
+    let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate } = $props()
+    import {roundUpToNearest5} from "../utils/roundUpToNearest5";
     // TODO: tests for lines
+    // TODO: add transitions to bars
     const priceLines = $derived([
-        {label: `${Math.round(dailyMax)} c/kWh`, top: '0%'},
-        {label: `${Math.round(0.75 * dailyMax)} c/kWh`, top: '25%'},
-        {label: `${Math.round(0.5 * dailyMax)} c/kWh`, top: '50%'},
-        {label: `${Math.round(0.25 * dailyMax)} c/kWh`, top: '75%'},
-        {label: `0 c/kWh`, top: '100%'}
+        {label: `${roundUpToNearest5(dailyMax)}`, top: '0%'},
+        {label: `${0.8 * roundUpToNearest5(dailyMax)}`, top: '20%'},
+        {label: `${0.6 *roundUpToNearest5(dailyMax)}`, top: '40%'},
+        {label: `${0.4 *roundUpToNearest5(dailyMax)}`, top: '60%'},
+        {label: `${0.2 *roundUpToNearest5(dailyMax)}`, top: '80%'},
+        {label: `0`, top: '100%'}
     ])
 
 </script>
-
 <div class="outer-container">
-    <!--    <div class="baseline"></div>-->
+    <p class="conversion-heading">c/kWh</p>
     <div class="barchart">
         {#each priceLines as line}
             <div class="priceLineBlock" style="top: {line.top};">
@@ -71,8 +73,12 @@
     }
 
     .price-label {
-        margin-left: -3em;
-        margin-top: -0.2em;
+        margin-left: -1.5em;
+        margin-top: -0.8em;
+    }
+    .conversion-heading{
+        padding-top: 0.2em;
+        text-align: center;
     }
 
 </style>

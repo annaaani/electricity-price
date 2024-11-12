@@ -22,8 +22,8 @@ describe('Bar', () => {
             price: 10,
             date: `${2024}-${10}-${5}`
         });
-        const box = container.querySelector('.bar');
+        const box = container.querySelector('.bg');
         const expectedHeight = 10 / 20 * 100
-        expect(box).toHaveStyle(`height: ${expectedHeight}%`);
+        expect(box).toHaveStyle(`height: ${Math.abs(expectedHeight)}%`);
     });
 });
