@@ -2,6 +2,7 @@
     import Bar from './Bar.svelte'
     import type {ISODate} from "../utils/dates";
     import {roundUpToNearest5} from "../utils/roundUpToNearest5";
+    import {t} from "../i18n"
 
     let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate } = $props()
     const priceLines = $derived([
@@ -15,7 +16,7 @@
 
 </script>
 <div class="outer-container">
-    <p class="conversion-heading">c/kWh</p>
+    <p class="conversion-heading">{t.units.cent}/{t.units.kiloWattHour}</p>
     <div class="barchart">
         {#each priceLines as line}
             <div class="priceLineBlock" style="top: {line.top};">

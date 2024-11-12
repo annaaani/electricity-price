@@ -1,0 +1,8 @@
+{
+  "title":"Electricity prices",
+
+  "units": {
+    "cent" : "c",
+    "kiloWattHour": "kWh"
+  }
+}

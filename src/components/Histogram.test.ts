@@ -1,8 +1,7 @@
-import {render, waitFor} from '@testing-library/svelte';
+import {render} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
 import Histogram from './Histogram.svelte';
 import type {ISODate} from "../utils/dates";
-import {roundUpToNearest5} from "../utils/roundUpToNearest5";
 
 describe('Histogram', () => {
     const hourlyPrices: number[] = [2.2, 1.9, 18, 7, -2.2, -1.3]
@@ -12,9 +11,7 @@ describe('Histogram', () => {
     test('shows correctly highest line label', async () => {
         const {getByText} = render(Histogram, {hourlyPrices, dailyMax, date})
         expect(getByText('20')).toBeInTheDocument()
-
     });
-
 
     test('renders six price lines with correct labels', () => {
         const {container} = render(Histogram, {hourlyPrices, dailyMax, date});
@@ -28,5 +25,4 @@ describe('Histogram', () => {
             expect(label).toBe(expectedLabels[index]);
         });
     });
-
 })

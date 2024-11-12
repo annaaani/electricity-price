@@ -19,6 +19,8 @@
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
     import {fetchData} from "./utils/loader";
     import {type ISODate, today} from "./utils/dates";
+    import {t} from "./i18n"
+    import LanguageSwitcher from "./components/LanguageSwitcher.svelte";
 
     let date: ISODate = $state(today)
     let country: Country = $state(countries[0])
@@ -47,12 +49,13 @@
         <p>Error: {error}</p>
 
     {:else if eleringDayPrices}
-        <h1>Electricity prices</h1>
+        <h1>{t.title}</h1>
         <div class="options-bar">
             <div>
                 <CountrySwitcher bind:country/>
             </div>
             <DateSwitcher bind:date/>
+            <LanguageSwitcher/>
         </div>
         {#if hourlyPrices}
             <Histogram {hourlyPrices} {dailyMax} {date}/>

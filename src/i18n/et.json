@@ -1,0 +1,8 @@
+{
+  "title":"Elektrihinnad",
+
+  "units": {
+    "cent" : "s",
+    "kiloWattHour": "kWh"
+  }
+}

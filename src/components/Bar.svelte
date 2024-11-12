@@ -1,6 +1,7 @@
 <script lang="ts">
     import {type ISODate, today} from "../utils/dates";
     import {roundUpToNearest5} from "../utils/roundUpToNearest5";
+    import {t} from "../i18n";
 
     let {time, price, dailyMax, date}: { time: number, price: number, dailyMax: number, date: ISODate } = $props()
     const currentHour = new Date().getHours();
@@ -14,7 +15,7 @@
          class:current-hour={isCurrentHour && isToday}
          style="height: {Math.abs(price / roundUpToNearest5(dailyMax) * 100)}%"></div>
     <p class="hour">{time}</p>
-    <p class="price">{price} c/kWh</p>
+    <p class="price">{price}{t.units.cent}/{t.units.kiloWattHour}</p>
 </div>
 
 
