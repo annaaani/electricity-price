@@ -5,7 +5,6 @@
     // TODO: negative price
     const currentHour = new Date().getHours();
     const isCurrentHour = $derived(time === currentHour);
-    // TODO: NOT WORKING
     const isToday = $derived(date === today);
 </script>
 
@@ -15,10 +14,12 @@
         <p class="price">{price} c/kWh</p>
     </div>
 {:else}
-    <div></div><div class="bar negative {isCurrentHour && isToday ? 'current-hour' : ''}" style="height: -{price / dailyMax * 100}%">
-    <p class="hour">{time}</p>
-    <p class="price">{price} c/kWh</p>
-</div>
+    <div></div>
+    <div class="bar negative {isCurrentHour && isToday ? 'current-hour' : ''}"
+         style="height: -{price / dailyMax * 100}%">
+        <p class="hour">{time}</p>
+        <p class="price">{price} c/kWh</p>
+    </div>
 {/if}
 
 

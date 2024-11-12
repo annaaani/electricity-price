@@ -1,10 +1,10 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
     import type {ISODate} from "../utils/dates";
-    // TODO: make dailyMax to $derived!!??
-    let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate} = $props()
+
+    let {hourlyPrices, dailyMax, dailyMin, date}: { hourlyPrices: number[], dailyMax: number, dailyMin: number, date: ISODate } = $props()
     // TODO: tests for lines
-    const priceLines =  $derived([
+    const priceLines = $derived([
         {label: `${Math.round(dailyMax)} c/kWh`, top: '0%'},
         {label: `${Math.round(0.75 * dailyMax)} c/kWh`, top: '25%'},
         {label: `${Math.round(0.5 * dailyMax)} c/kWh`, top: '50%'},
@@ -15,7 +15,7 @@
 </script>
 
 <div class="outer-container">
-<!--    <div class="baseline"></div>-->
+    <!--    <div class="baseline"></div>-->
     <div class="barchart">
         {#each priceLines as line}
             <div class="priceLineBlock" style="top: {line.top};">
