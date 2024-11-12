@@ -4,8 +4,6 @@
     import {roundUpToNearest5} from "../utils/roundUpToNearest5";
 
     let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate } = $props()
-    // TODO: tests for lines
-    // TODO: add transitions to bars
     const priceLines = $derived([
         {label: `${roundUpToNearest5(dailyMax)}`, top: '0%'},
         {label: `${0.8 * roundUpToNearest5(dailyMax)}`, top: '20%'},

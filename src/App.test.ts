@@ -50,6 +50,7 @@ describe('App.svelte', () => {
             expect(getByText('fi')).toBeInTheDocument();
         });
     });
+    
     test('correct getOverallMaxPrice', () => {
         const result = getOverallMaxPrice({
             ...eleringResponse.data,

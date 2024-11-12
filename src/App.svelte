@@ -1,9 +1,9 @@
 <script lang="ts" module>
-
     interface PriceData {
         timestamp: number
         price: number
     }
+
     export function getOverallMaxPrice(eleringDayPrices: Record<Country, PriceData[]> | null): number {
         if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
         return Math.max(...Object.values(eleringDayPrices)
