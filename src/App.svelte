@@ -1,3 +1,16 @@
+<script lang="ts" module>
+
+    interface PriceData {
+        timestamp: number
+        price: number
+    }
+    export function getOverallMaxPrice(eleringDayPrices: Record<Country, PriceData[]> | null): number {
+        if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
+        return Math.max(...Object.values(eleringDayPrices)
+            .flatMap(countryPrices => countryPrices.map(p => convertPriceMWhToSKWh(p.price))));
+    }
+</script>
+
 <script lang="ts">
     import CountrySwitcher from "./components/CountrySwitcher.svelte"
     import DateSwitcher from "./components/DateSwitcher.svelte"
@@ -6,11 +19,6 @@
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
     import {fetchData} from "./utils/loader";
     import {type ISODate, today} from "./utils/dates";
-
-    interface PriceData {
-        timestamp: number
-        price: number
-    }
 
     let date: ISODate = $state(today)
     let country: Country = $state(countries[0])
@@ -24,12 +32,6 @@
 
     function getHourlyPrices(eleringDayPrices: Record<Country, PriceData[]> | null, country: Country) {
         return eleringDayPrices?.[country].map(p => convertPriceMWhToSKWh(p.price));
-    }
-
-    function getOverallMaxPrice(eleringDayPrices: Record<Country, PriceData[]> | null): number {
-        if (!eleringDayPrices || Object.keys(eleringDayPrices).length === 0) return 0;
-        return Math.max(...Object.values(eleringDayPrices)
-            .flatMap(countryPrices => countryPrices.map(p => convertPriceMWhToSKWh(p.price))));
     }
 
     $effect(() => {

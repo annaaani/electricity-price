@@ -1,6 +1,6 @@
 import {render, waitFor} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
-import App from './App.svelte';
+import App, {getOverallMaxPrice} from './App.svelte';
 import {tick} from "svelte";
 
 describe('App.svelte', () => {
@@ -49,5 +49,14 @@ describe('App.svelte', () => {
             expect(getByText('lt')).toBeInTheDocument();
             expect(getByText('fi')).toBeInTheDocument();
         });
+    });
+    test('correct getOverallMaxPrice', () => {
+        const result = getOverallMaxPrice({
+            ...eleringResponse.data,
+            lt: [],
+            lv: [],
+            fi: []
+        });
+        expect(result).toBe(5.5);
     });
 })
