@@ -1,7 +1,8 @@
-import {render, waitFor} from '@testing-library/svelte';
+import {fireEvent, render, waitFor} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
 import App, {getOverallMaxPrice} from './App.svelte';
 import {tick} from "svelte";
+import {t} from "./i18n";
 
 describe('App.svelte', () => {
     const eleringResponse = {
@@ -50,7 +51,7 @@ describe('App.svelte', () => {
             expect(getByText('fi')).toBeInTheDocument();
         });
     });
-    
+
     test('correct getOverallMaxPrice', () => {
         const result = getOverallMaxPrice({
             ...eleringResponse.data,
@@ -59,5 +60,28 @@ describe('App.svelte', () => {
             fi: []
         });
         expect(result).toBe(5.5);
+    });
+
+    test('renders options with correct headers', async () => {
+        vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response);
+
+        const {getAllByRole, getByRole, getByText} = render(App);
+
+        await waitFor(() => expect(getByText(t.title)).toBeInTheDocument());
+
+        const select = getByRole('combobox') as HTMLInputElement;
+
+        expect(getByText(t.title)).toBeInTheDocument();
+
+        await fireEvent.change(select, {target: {value: 'et'}});
+
+        await waitFor(() => expect(getByText('Elektrihinnad')).toBeInTheDocument());
+
+        const options = getAllByRole('option') as HTMLOptionElement[];
+
+        const selectedOption = options.find(option => option.selected);
+        expect(selectedOption).toBeTruthy();
+        expect(selectedOption?.value).toBe('et');
+        expect(selectedOption?.textContent).toBe('Eesti');
     });
 })

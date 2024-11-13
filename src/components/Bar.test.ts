@@ -4,7 +4,7 @@ import Bar from './Bar.svelte';
 
 describe('Bar', () => {
 
-    //TODO: update and add tests
+    //TODO: update and add test for negative value
 
     test('renders time and price correctly', async () => {
         const {getByText} = render(Bar, {

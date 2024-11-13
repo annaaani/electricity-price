@@ -15,7 +15,7 @@
          class:current-hour={isCurrentHour && isToday}
          style="height: {Math.abs(price / roundUpToNearest5(dailyMax) * 100)}%"></div>
     <p class="hour">{time}</p>
-    <p class="price">{price}{t.units.cent}/{t.units.kiloWattHour}</p>
+    <p class="price">{price} {t.units.cent}/{t.units.kiloWattHour}</p>
 </div>
 
 
