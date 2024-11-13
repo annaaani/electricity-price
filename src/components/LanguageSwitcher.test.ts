@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest";
-import {fireEvent, render, waitFor} from "@testing-library/svelte";
+import {fireEvent, render} from "@testing-library/svelte";
 import LanguageSwitcher from "./LanguageSwitcher.svelte";
 import {changeLang, t} from "../i18n";
 import {tick} from "svelte";
@@ -12,7 +12,7 @@ vi.mock('../i18n', async () => {
 describe('LanguageSwitcher.svelte', () => {
 
     test('renders options with correct language labels and codes', () => {
-        const {getAllByRole } = render(LanguageSwitcher);
+        const {getAllByRole} = render(LanguageSwitcher);
         const options = getAllByRole('option') as HTMLOptionElement[];
 
         expect(options).toHaveLength(Object.keys(t.languageCodes).length);
@@ -37,9 +37,5 @@ describe('LanguageSwitcher.svelte', () => {
         await tick()
         expect((select as HTMLSelectElement).value).toEqual('et')
         expect(changeLang).toBeCalledWith("et")
-
-
-        // vi.spyOn(window.location, 'reload').mockImplementation(vi.fn())
-
     });
 });

@@ -1,10 +1,8 @@
 import {render} from '@testing-library/svelte';
-import {expect, test, describe} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import Bar from './Bar.svelte';
 
 describe('Bar', () => {
-
-    //TODO: update and add test for negative value
 
     test('renders time and price correctly', async () => {
         const {getByText} = render(Bar, {
@@ -31,15 +29,18 @@ describe('Bar', () => {
     });
 
     test('renders negative price and height correctly', async () => {
-        const {getByText} = render(Bar, {
+        const {getByText, container} = render(Bar, {
             dailyMax: 20,
             time: 12,
             price: -10,
             date: `${2024}-${10}-${5}`
         });
+        const box = container.querySelector('.bg') as HTMLElement;
+        const expectedHeight = Math.abs(-10 / 20 * 100)
 
         expect(getByText('12')).toBeInTheDocument();
         expect(getByText('-10 c/kWh')).toBeInTheDocument();
-
+        expect(box).toHaveStyle(`height: ${expectedHeight}%`);
+        expect(box.classList).toContain('negative');
     });
 });
