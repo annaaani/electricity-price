@@ -4,5 +4,9 @@
   "units": {
     "cent" : "s",
     "kiloWattHour": "kWh"
+  },
+  "languageCodes":{
+    "en": "English",
+    "et": "Eesti"
   }
 }

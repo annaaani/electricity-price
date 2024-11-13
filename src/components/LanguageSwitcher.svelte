@@ -1,10 +1,10 @@
 <script>
-    import langs from '../i18n/langs.json'
-    import {changeLang, lang} from "../i18n";
+    import {t, changeLang, lang} from "../i18n";
+    // TODO: tests
 </script>
 
-<select value={lang} on:change={e => changeLang(e.currentTarget.value)}>
-    {#each langs as lang}
-        <option>{lang}</option>
+<select value={lang} onchange={e => changeLang(e.currentTarget.value)}>
+    {#each Object.entries(t.languageCodes) as [code, name]}
+        <option value={code}>{name}</option>
     {/each}
 </select>
