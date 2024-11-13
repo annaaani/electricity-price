@@ -1,11 +1,10 @@
 {
-  "title":"Elektrihinnad",
-
+  "title": "Elektrihinnad",
   "units": {
-    "cent" : "s",
+    "cent": "s",
     "kiloWattHour": "kWh"
   },
-  "languageCodes":{
+  "languageCodes": {
     "en": "English",
     "et": "Eesti"
   }

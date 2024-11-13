@@ -23,8 +23,10 @@ describe('Bar', () => {
             price: 10,
             date: `${2024}-${10}-${5}`
         });
-        const box = container.querySelector('.bg');
         const expectedHeight = 10 / 20 * 100
+
+        const box = container.querySelector('.bg');
+
         expect(box).toHaveStyle(`height: ${Math.abs(expectedHeight)}%`);
     });
 
@@ -35,12 +37,13 @@ describe('Bar', () => {
             price: -10,
             date: `${2024}-${10}-${5}`
         });
-        const box = container.querySelector('.bg') as HTMLElement;
         const expectedHeight = Math.abs(-10 / 20 * 100)
+
+        const bar = container.querySelector('.bg') as HTMLElement;
 
         expect(getByText('12')).toBeInTheDocument();
         expect(getByText('-10 c/kWh')).toBeInTheDocument();
-        expect(box).toHaveStyle(`height: ${expectedHeight}%`);
-        expect(box.classList).toContain('negative');
+        expect(bar).toHaveStyle(`height: ${expectedHeight}%`);
+        expect(bar.classList).toContain('negative');
     });
 });

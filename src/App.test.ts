@@ -1,8 +1,7 @@
-import {fireEvent, render, waitFor} from '@testing-library/svelte';
+import {render, waitFor} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
 import App, {getOverallMaxPrice} from './App.svelte';
 import {tick} from "svelte";
-import {t} from "./i18n";
 
 describe('App.svelte', () => {
     const eleringResponse = {
@@ -62,6 +61,7 @@ describe('App.svelte', () => {
         expect(result).toBe(5.5);
     });
 
+    // TODO: to finish
     // test('renders options with correct headers', async () => {
     //     vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response);
     //
@@ -85,7 +85,6 @@ describe('App.svelte', () => {
     //     expect(selectedOption?.textContent).toBe('Eesti');
     // });
 })
-
 
 
 // vi.spyOn(window.location, 'reload').mockImplementation(vi.fn())

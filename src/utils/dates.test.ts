@@ -8,7 +8,7 @@ describe('dates.ts', () => {
     })
 
     test('should return false if date is before maxDate', async () => {
-        const nextYear = new Date().getFullYear()+1;
+        const nextYear = new Date().getFullYear() + 1;
         const dateAfterMax = `${nextYear}-11-12`;
         expect(checkMaxDate(<ISODate>dateAfterMax)).to.eq(false)
     })

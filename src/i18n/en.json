@@ -1,11 +1,10 @@
 {
-  "title":"Electricity prices",
-
+  "title": "Electricity prices",
   "units": {
-    "cent" : "c",
+    "cent": "c",
     "kiloWattHour": "kWh"
   },
-  "languageCodes":{
+  "languageCodes": {
     "en": "English",
     "et": "Eesti"
   }

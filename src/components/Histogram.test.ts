@@ -1,5 +1,5 @@
 import {render} from '@testing-library/svelte';
-import {describe, expect, test, vi} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import Histogram from './Histogram.svelte';
 import type {ISODate} from "../utils/dates";
 
