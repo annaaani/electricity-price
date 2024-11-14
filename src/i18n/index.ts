@@ -1,12 +1,18 @@
 import type en from './en.json'
 import langs from './langs.json'
 
-const navLanguage = navigator.language.split("-")[0]
-export const lang = langs.includes(localStorage['lang']) ? localStorage['lang'] : (langs.includes(navLanguage) ? navLanguage : langs[0]);
+export type Lang = typeof langs[number]
 
-export async function changeLang(lang: typeof langs[number]) {
+export function detectLang() {
+    const navLanguage = navigator.language.split("-")[0]
+    return langs.includes(localStorage['lang']) ? localStorage['lang'] : (langs.includes(navLanguage) ? navLanguage : langs[0]);
+}
+
+export const lang = detectLang();
+
+export async function changeLang(lang: Lang) {
     localStorage['lang'] = lang
     location.reload()
 }
 
-export let t: typeof en = await import(`./${lang}.json`)
+export let t: typeof en = (await import(`./${lang}.json`)).default

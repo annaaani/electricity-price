@@ -2,23 +2,29 @@ import {describe, expect, test} from "vitest";
 import {fireEvent, render} from "@testing-library/svelte";
 import DeviceSwitcher from './DeviceSwitcher.svelte';
 import {t} from '../../i18n';
+import {tick} from "svelte";
 
 
 describe('DeviceSwitcher.svelte', () => {
     test('default text', async () => {
-        const {container} = render(DeviceSwitcher)
-        let countryInput = container.querySelector('input:checked') as HTMLInputElement
-        expect(countryInput.value).toBe(`${t.deviceDefault}`)
+        const {getByRole} = render(DeviceSwitcher, {device: undefined})
+        const select = (getByRole('combobox') as HTMLSelectElement);
+        expect(select.options[select.selectedIndex].text).toBe(t.devices.laundryMachine);
     })
 
     test('can switch device', async () => {
-        const {container} = render(DeviceSwitcher, {device: `${t.devices.vacuum}`})
-        const defaultRadio = container.querySelector('input:checked') as HTMLInputElement
-        expect(defaultRadio.value).toBe(`${t.devices.vacuum}`)
+        const {getByRole} = render(DeviceSwitcher, {device: undefined})
+        const select = (getByRole('combobox') as HTMLSelectElement);
 
-        let devicesRadio = container.querySelector(`input[value=${t.devices.vacuum}}]`) as HTMLInputElement
-        await fireEvent.click(devicesRadio)
-        expect(devicesRadio.checked).toBe(true)
+        expect(select).toBeInTheDocument()
+        expect(select.value).toEqual('laundryMachine')
+
+        const secondOption = (select.querySelector('option[value="car"]') as HTMLOptionElement);
+        expect(secondOption).toBeInTheDocument()
+
+        await fireEvent.change(select, {target: {value: secondOption.value}});
+        await tick()
+        expect((select as HTMLSelectElement).value).toEqual('car')
     })
 
     test('renders options with correct language devices', () => {

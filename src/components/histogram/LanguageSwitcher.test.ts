@@ -4,8 +4,8 @@ import LanguageSwitcher from './LanguageSwitcher.svelte';
 import {changeLang, t} from '../../i18n';
 import {tick} from "svelte";
 
-vi.mock('../i18n', async () => {
-    const actual = await vi.importActual('../i18n')
+vi.mock('../../i18n', async () => {
+    const actual = await vi.importActual('../../i18n')
     return {...actual, changeLang: vi.fn()}
 });
 
@@ -24,8 +24,6 @@ describe('LanguageSwitcher.svelte', () => {
     });
 
     test('selecting a new language calls changeLang with the correct value', async () => {
-
-        // TODO: broken test after refactoring
         const {getByRole} = render(LanguageSwitcher);
         const select = (getByRole('combobox') as HTMLSelectElement);
 

@@ -10,10 +10,9 @@
   },
   "loading": "Loading...",
   "error": "Error",
-  "deviceDefault": "Choose device",
   "devices": {
-    "car": "Car",
+    "laundryMachine": "Laundry machine",
     "vacuum": "Vacuum",
-    "laundryMachine": "Laundry machine"
+    "car": "Car"
   }
 }

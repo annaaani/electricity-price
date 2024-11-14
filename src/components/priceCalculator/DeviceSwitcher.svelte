@@ -1,9 +1,10 @@
-<!--<script>-->
-<!--    import {changeDevice, device, t} from "../i18n";-->
-<!--</script>-->
+<script>
+    import { t } from '../../i18n'
+    let {device = $bindable()} = $props()
+</script>
 
-<!--<select value={lang} onchange={e => changeDevice(e.currentTarget.value)}>-->
-<!--    {#each Object.entries(t.languageCodes) as [code, name]}-->
-<!--        <option value={code}>{name}</option>-->
-<!--    {/each}-->
-<!--</select>-->
+<select bind:value={device}>
+    {#each Object.entries(t.devices) as [code, name]}
+        <option value={code}>{name}</option>
+    {/each}
+</select>

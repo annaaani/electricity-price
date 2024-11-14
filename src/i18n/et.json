@@ -10,10 +10,9 @@
   },
   "loading": "Laeb...",
   "error": "Viga",
-  "deviceDefault": "Vali seade",
   "devices": {
-    "car": "Auto",
+    "laundryMachine": "Pesumasin",
     "vacuum": "Tolmuimeja",
-    "laundryMachine": "Pesumasin"
+    "car": "Auto"
   }
 }
