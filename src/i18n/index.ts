@@ -5,7 +5,8 @@ export type Lang = typeof langs[number]
 
 export function detectLang() {
     const navLanguage = navigator.language.split("-")[0]
-    return langs.includes(localStorage['lang']) ? localStorage['lang'] : (langs.includes(navLanguage) ? navLanguage : langs[0]);
+    const lStorage = localStorage['lang']
+    return langs.includes(lStorage) ? lStorage : (langs.includes(navLanguage) ? navLanguage : langs[0]);
 }
 
 export const lang = detectLang();

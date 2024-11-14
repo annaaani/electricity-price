@@ -1,5 +1,5 @@
 import {afterEach, describe, expect, it, vi} from "vitest"
-import {changeLang, t} from "./"
+import {changeLang, detectLang, t} from "./"
 import en from './en.json'
 
 describe('changeLang', () => {
@@ -12,15 +12,23 @@ describe('changeLang', () => {
     })
 
     it('uses user-preferred language configured in the browser', () => {
-        // TODO
+        localStorage['lang'] = 'et'
+        const result = detectLang()
+        expect(result).toBe('et')
     })
 
     it('uses previously memorized language', () => {
-        // TODO
+        localStorage['lang'] = 'et'
+        vi.stubGlobal('location', {reload: vi.fn()})
+
+        const result = detectLang()
+        expect(result).toBe('et')
     })
 
     it('falls back to default language if user provides an unsupported one', () => {
-        // TODO
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr')
+        const result = detectLang()
+        expect(result).toBe('en')
     })
 
     it('should memorize changed language', () => {
