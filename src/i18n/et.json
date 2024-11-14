@@ -9,5 +9,11 @@
     "et": "Eesti"
   },
   "loading": "Laeb...",
-  "error": "Viga"
+  "error": "Viga",
+  "deviceDefault": "Vali seade",
+  "devices": {
+    "car": "Auto",
+    "vacuum": "Tolmuimeja",
+    "laundryMachine": "Pesumasin"
+  }
 }

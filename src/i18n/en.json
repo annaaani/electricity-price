@@ -9,5 +9,11 @@
     "et": "Eesti"
   },
   "loading": "Loading...",
-  "error": "Error"
+  "error": "Error",
+  "deviceDefault": "Choose device",
+  "devices": {
+    "car": "Car",
+    "vacuum": "Vacuum",
+    "laundryMachine": "Laundry machine"
+  }
 }
