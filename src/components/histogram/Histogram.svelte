@@ -1,8 +1,8 @@
 <script lang="ts">
     import Bar from './Bar.svelte'
-    import type {ISODate} from "../utils/dates";
-    import {roundUpToNearest5} from "../utils/roundUpToNearest5";
-    import {t} from "../i18n"
+    import type {ISODate} from "../../utils/dates";
+    import {roundUpToNearest5} from "../../utils/roundUpToNearest5";
+    import {t} from "../../i18n"
 
     let {hourlyPrices, dailyMax, date}: { hourlyPrices: number[], dailyMax: number, date: ISODate } = $props()
     const priceLines = $derived([

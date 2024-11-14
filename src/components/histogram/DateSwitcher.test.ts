@@ -1,6 +1,6 @@
 import {fireEvent, render} from '@testing-library/svelte';
 import {describe, expect, test} from 'vitest'
-import {today} from "../utils/dates";
+import {today} from "../../utils/dates";
 import DateSwitcher from "./DateSwitcher.svelte";
 
 describe('DateSwitcher.svelte', () => {

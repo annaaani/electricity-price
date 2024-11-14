@@ -1,4 +1,4 @@
-import {render, waitFor} from '@testing-library/svelte';
+import {fireEvent, render, waitFor} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
 import App, {getOverallMaxPrice} from './App.svelte';
 import {tick} from "svelte";
@@ -23,13 +23,13 @@ describe('App.svelte', () => {
         vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response)
 
         const {getByText} = render(App)
-        expect(getByText('Loading...')).toBeInTheDocument()
+        expect(getByText('Loading...')).toBeInTheDocument() // TODO: from t
 
         await tick()
         expect(fetch).toHaveBeenCalled()
 
         await waitFor(() => {
-            expect(getByText('Electricity prices')).toBeInTheDocument();
+            expect(getByText('Electricity prices')).toBeInTheDocument(); // TODO
         });
     });
 
@@ -60,31 +60,4 @@ describe('App.svelte', () => {
         });
         expect(result).toBe(5.5);
     });
-
-    // TODO: to finish
-    // test('renders options with correct headers', async () => {
-    //     vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response);
-    //
-    //     const {getAllByRole, getByRole, getByText} = render(App);
-    //
-    //     await waitFor(() => expect(getByText(t.title)).toBeInTheDocument());
-    //
-    //     const select = getByRole('combobox') as HTMLInputElement;
-    //
-    //     expect(getByText(t.title)).toBeInTheDocument();
-    //
-    //     await fireEvent.change(select, {target: {value: 'et'}});
-    //
-    //     await waitFor(() => expect(getByText('Elektrihinnad')).toBeInTheDocument());
-    //
-    //     const options = getAllByRole('option') as HTMLOptionElement[];
-    //
-    //     const selectedOption = options.find(option => option.selected);
-    //     expect(selectedOption).toBeTruthy();
-    //     expect(selectedOption?.value).toBe('et');
-    //     expect(selectedOption?.textContent).toBe('Eesti');
-    // });
 })
-
-
-// vi.spyOn(window.location, 'reload').mockImplementation(vi.fn())

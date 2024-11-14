@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {type ISODate, today} from "../utils/dates";
-    import {roundUpToNearest5} from "../utils/roundUpToNearest5";
-    import {t} from "../i18n";
+    import {type ISODate, today} from "../../utils/dates";
+    import {roundUpToNearest5} from "../../utils/roundUpToNearest5";
+    import {t} from "../../i18n";
 
     let {time, price, dailyMax, date}: { time: number, price: number, dailyMax: number, date: ISODate } = $props()
     const currentHour = new Date().getHours();

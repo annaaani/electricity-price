@@ -1,7 +1,7 @@
 import {render} from '@testing-library/svelte';
 import {describe, expect, test} from 'vitest'
 import Histogram from './Histogram.svelte';
-import type {ISODate} from "../utils/dates";
+import type {ISODate} from "../../utils/dates";
 
 describe('Histogram', () => {
     const hourlyPrices: number[] = [2.2, 1.9, 18, 7, -2.2, -1.3]

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {countries, type Country} from "../utils/countries"
+    import {countries, type Country} from "../../utils/countries"
 
     export let country: Country = countries[0]
 </script>

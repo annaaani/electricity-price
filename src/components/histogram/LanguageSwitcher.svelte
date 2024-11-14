@@ -1,5 +1,5 @@
 <script>
-    import {changeLang, lang, t} from "../i18n";
+    import {changeLang, lang, t} from "../../i18n/";
 </script>
 
 <select value={lang} onchange={e => changeLang(e.currentTarget.value)}>

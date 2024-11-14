@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {checkMaxDate, type ISODate, nextDate, prevDate, today} from "../utils/dates";
+    import {checkMaxDate, type ISODate, nextDate, prevDate, today} from "../../utils/dates";
 
     let {date = $bindable(today)}: { date: ISODate } = $props()
     export {date as boundDate}

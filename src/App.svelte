@@ -12,15 +12,16 @@
 </script>
 
 <script lang="ts">
-    import CountrySwitcher from "./components/CountrySwitcher.svelte"
-    import DateSwitcher from "./components/DateSwitcher.svelte"
-    import Histogram from "./components/Histogram.svelte"
+    import CountrySwitcher from "./components/histogram/CountrySwitcher.svelte"
+    import DateSwitcher from "./components/histogram/DateSwitcher.svelte"
+    import Histogram from "./components/histogram/Histogram.svelte"
     import {countries, type Country} from "./utils/countries"
     import {convertPriceMWhToSKWh} from "./utils/convertPriceMWhToSKWh";
     import {fetchData} from "./utils/loader";
     import {type ISODate, today} from "./utils/dates";
     import {t} from "./i18n"
-    import LanguageSwitcher from "./components/LanguageSwitcher.svelte";
+    import LanguageSwitcher from "./components/histogram/LanguageSwitcher.svelte";
+    import EnergyUsage from "./components/priceCalculator/EnergyUsage.svelte";
 
     let date: ISODate = $state(today)
     let country: Country = $state(countries[0])
@@ -59,6 +60,7 @@
         </div>
         {#if hourlyPrices}
             <Histogram {hourlyPrices} {dailyMax} {date}/>
+            <EnergyUsage/>
         {/if}
     {:else}
         <p>Loading...</p>
