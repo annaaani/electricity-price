@@ -47,7 +47,7 @@
 
 <main>
     {#if error}
-        <p>Error: {error}</p>
+        <p>{t.error}: {error}</p>
 
     {:else if eleringDayPrices}
         <h1>{t.title}</h1>
@@ -63,7 +63,7 @@
             <EnergyUsage/>
         {/if}
     {:else}
-        <p>Loading...</p>
+        <p>{t.loading}</p>
     {/if}
 </main>
 

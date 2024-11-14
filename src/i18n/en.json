@@ -7,5 +7,7 @@
   "languageCodes": {
     "en": "English",
     "et": "Eesti"
-  }
+  },
+  "loading": "Loading...",
+  "error": "Error"
 }

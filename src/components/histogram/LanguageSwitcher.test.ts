@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from "vitest";
 import {fireEvent, render} from "@testing-library/svelte";
 import LanguageSwitcher from './LanguageSwitcher.svelte';
-import {changeLang, t} from "../../i18n";
+import {changeLang, t} from '../../i18n';
 import {tick} from "svelte";
 
 vi.mock('../i18n', async () => {

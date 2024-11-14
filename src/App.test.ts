@@ -1,7 +1,8 @@
-import {fireEvent, render, waitFor} from '@testing-library/svelte';
+import {render, waitFor} from '@testing-library/svelte';
 import {describe, expect, test, vi} from 'vitest'
 import App, {getOverallMaxPrice} from './App.svelte';
 import {tick} from "svelte";
+import {t} from "./i18n";
 
 describe('App.svelte', () => {
     const eleringResponse = {
@@ -23,13 +24,13 @@ describe('App.svelte', () => {
         vi.spyOn(window, 'fetch').mockResolvedValue({ok: true, json: async () => eleringResponse} as Response)
 
         const {getByText} = render(App)
-        expect(getByText('Loading...')).toBeInTheDocument() // TODO: from t
+        expect(getByText(`${t.loading}`)).toBeInTheDocument()
 
         await tick()
         expect(fetch).toHaveBeenCalled()
 
         await waitFor(() => {
-            expect(getByText('Electricity prices')).toBeInTheDocument(); // TODO
+            expect(getByText(`${t.title}`)).toBeInTheDocument();
         });
     });
 
@@ -42,8 +43,8 @@ describe('App.svelte', () => {
         await waitFor(() => {
             expect(container.querySelector('.hour')?.textContent).to.equal('0');
             expect(getByText('1')).toBeInTheDocument();
-            expect(getByText('5.5 c/kWh')).toBeInTheDocument();
-            expect(getByText('0.46 c/kWh')).toBeInTheDocument();
+            expect(getByText(`5.5 ${t.units.cent}/${t.units.kiloWattHour}`)).toBeInTheDocument();
+            expect(getByText(`0.46 ${t.units.cent}/${t.units.kiloWattHour}`)).toBeInTheDocument();
             expect(getByText('ee')).toBeInTheDocument();
             expect(getByText('lv')).toBeInTheDocument();
             expect(getByText('lt')).toBeInTheDocument();

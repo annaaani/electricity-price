@@ -1,6 +1,7 @@
 import {render} from '@testing-library/svelte';
 import {describe, expect, test} from 'vitest'
 import Bar from './Bar.svelte';
+import {t} from '../../i18n';
 
 describe('Bar', () => {
 
@@ -13,7 +14,7 @@ describe('Bar', () => {
         });
 
         expect(getByText('12')).toBeInTheDocument();
-        expect(getByText('10 c/kWh')).toBeInTheDocument();
+        expect(getByText(`10 ${t.units.cent}/${t.units.kiloWattHour}`)).toBeInTheDocument();
     });
 
     test('sets the correct height based on price', async () => {
@@ -42,7 +43,7 @@ describe('Bar', () => {
         const bar = container.querySelector('.bg') as HTMLElement;
 
         expect(getByText('12')).toBeInTheDocument();
-        expect(getByText('-10 c/kWh')).toBeInTheDocument();
+        expect(getByText(`-10 ${t.units.cent}/${t.units.kiloWattHour}`)).toBeInTheDocument();
         expect(bar).toHaveStyle(`height: ${expectedHeight}%`);
         expect(bar.classList).toContain('negative');
     });
