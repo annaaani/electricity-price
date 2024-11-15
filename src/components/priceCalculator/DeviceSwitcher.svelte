@@ -10,3 +10,10 @@
         <option value={code}>{name}</option>
     {/each}
 </select>
+
+<style>
+
+    select {
+        padding: 0.5em;
+    }
+</style>

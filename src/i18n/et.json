@@ -15,5 +15,6 @@
     "vacuum": "Tolmuimeja",
     "car": "Auto"
   },
-  "hour": "t"
+  "hour": "t",
+  "watt" : "W"
 }

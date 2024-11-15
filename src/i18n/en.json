@@ -15,5 +15,6 @@
     "vacuum": "Vacuum",
     "car": "Car"
   },
-  "hour": "h"
+  "hour": "h",
+  "watt" : "W"
 }
