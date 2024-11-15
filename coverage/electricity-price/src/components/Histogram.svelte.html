@@ -125,7 +125,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;script lang="ts"&gt;
     import Bar from './Bar.svelte'
-    let {hourlyPrices, hours} : {hourlyPrices: number[], hours: string[]} = $props()
+    let {hourlyPrices, durationOptions} : {hourlyPrices: number[], durationOptions: string[]} = $props()
 &nbsp;
     // TODO: create a function to get highest of the day to adjust the barchart height
 &lt;/script&gt;
@@ -133,7 +133,7 @@
 &lt;div class="barchart"&gt;
     {#each hourlyPrices as hp, i}
         &lt;Bar
-                time={hours[i]}
+                time={durationOptions[i]}
                 price={hp}
         /&gt;
     {/each}

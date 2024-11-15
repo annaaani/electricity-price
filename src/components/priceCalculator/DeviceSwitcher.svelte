@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
     import {t} from '../../i18n'
 
-    let {device = $bindable()} = $props()
+    let {timeDevice = $bindable()}: { timeDevice: string | undefined } = $props()
+
 </script>
 
-<select bind:value={device}>
+<select bind:value={timeDevice}>
     {#each Object.entries(t.devices) as [code, name]}
         <option value={code}>{name}</option>
     {/each}

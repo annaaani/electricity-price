@@ -80,8 +80,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export function convertTimestamp(timestamp: number): string {
 &nbsp;
     const date = new Date(timestamp * 1000);
-    const hours: number = date.getHours();
-    return `${hours &lt; 10 ? '0' + hours : hours}`;
+    const durationOptions: number = date.getHours();
+    return `${durationOptions &lt; 10 ? '0' + durationOptions : durationOptions}`;
 }
 &nbsp;
 &nbsp;</pre></td></tr></table></pre>

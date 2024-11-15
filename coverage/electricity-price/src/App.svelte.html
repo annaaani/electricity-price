@@ -239,7 +239,7 @@
     })
 &nbsp;
     let hourlyPrices = $derived(getHourlyPrices(eleringDayPrices, country))
-    let hours = $derived(getHours(eleringDayPrices, country))
+    let durationOptions = $derived(getHours(eleringDayPrices, country))
 &lt;/script&gt;
 &nbsp;
 &lt;main&gt;
@@ -254,8 +254,8 @@
             &lt;/div&gt;
             &lt;DateComponent bind:date/&gt;
         &lt;/div&gt;
-        {#if hourlyPrices &amp;&amp; hours}
-            &lt;Histogram {hourlyPrices} {hours}/&gt;
+        {#if hourlyPrices &amp;&amp; durationOptions}
+            &lt;Histogram {hourlyPrices} {durationOptions}/&gt;
         {/if}
     {:else}
         &lt;p&gt;Loading...&lt;/p&gt;
