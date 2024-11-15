@@ -4,14 +4,15 @@ import Time from "./Time.svelte";
 
 describe('Time.svelte', () => {
     test('`3h` is activated by default for vacuum', async () => {
-        const {container} = render(Time, undefined)
-        let defaultInput = container.querySelector("input[type=text]") as HTMLInputElement
-        expect(defaultInput.value).toBe('3h')
+        const {container} = render(Time, {duration: 3})
+        let defaultInput = container.querySelector('input')!
+        expect(defaultInput.value).toBe('3')
     })
 
     test('change duration for vacuum', async () => {
-        const {container} = render(Time, {duration:2})
-        let defaultInput = container.querySelector("input[type=text]") as HTMLInputElement
-        expect(defaultInput.value).toBe('2h')
+        const {container} = render(Time, {duration: 3})
+        let input = container.querySelector('input')!
+        await fireEvent.change(input, {target: {value: 2}});
+        expect(input.value).toBe('2')
     })
 })
