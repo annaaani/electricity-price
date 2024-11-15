@@ -1,0 +1,14 @@
+{
+  "laundryMachine": {
+    "watts": 800,
+    "hours": 3
+  },
+  "vacuum": {
+    "watts": 1000,
+    "hours": 1
+  },
+  "car": {
+    "watts": 7200,
+    "hours": 4
+  }
+}
