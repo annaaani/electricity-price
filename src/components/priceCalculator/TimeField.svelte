@@ -1,6 +1,9 @@
 <script lang="ts">
     import {t} from '../../i18n'
     let {duration = $bindable()} = $props()
+
+    // TODO: styling length
+    // TODO: add max duration according to the time of the day and available hours
 </script>
 
 <label class="input-container">

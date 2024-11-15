@@ -7,13 +7,13 @@ import {tick} from "svelte";
 
 describe('DeviceSwitcher.svelte', () => {
     test('default text', async () => {
-        const {getByRole} = render(DeviceSwitcher, {device: undefined})
+        const {getByRole} = render(DeviceSwitcher)
         const select = (getByRole('combobox') as HTMLSelectElement);
         expect(select.options[select.selectedIndex].text).toBe(t.devices.laundryMachine);
     })
 
     test('can switch device', async () => {
-        const {getByRole} = render(DeviceSwitcher, {device: undefined})
+        const {getByRole} = render(DeviceSwitcher)
         const select = (getByRole('combobox') as HTMLSelectElement);
 
         expect(select).toBeInTheDocument()

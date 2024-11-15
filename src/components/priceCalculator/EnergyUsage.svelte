@@ -16,6 +16,7 @@
     let d: Device | undefined;
     let duration = $state()
     let watts = $state()
+    let startTime = $state(new Date().getHours()+1)
 
     $effect(() => {
         d = (Object(devicesData)[timeDevice!]) as Device;
@@ -30,7 +31,7 @@
 <DeviceSwitcher bind:timeDevice/>
 <TimeField bind:duration/>
 <PowerField bind:watts />
-<CalcStartOption/>
+<CalcStartOption bind:startTime/>
 <DisplayPrice/>
 
 
