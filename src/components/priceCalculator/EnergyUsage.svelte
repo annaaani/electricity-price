@@ -3,12 +3,8 @@
     import DeviceSwitcher from './DeviceSwitcher.svelte'
     import DisplayPrice from './DisplayPrice.svelte'
     import CalcStartOption from "./CalcStartOption.svelte";
-``
-    let device = $state()
 
-    $effect(() => {
-        console.log(device)
-    })
+    let device = $state()
 </script>
 
 

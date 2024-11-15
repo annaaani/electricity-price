@@ -5,7 +5,7 @@
     export {date as boundDate}
 
 </script>
-<div>
+<div class="date-switcher">
     <button onclick={async () => date = await prevDate(date)}>&#60;&#60;</button>
     <input type="date" bind:value={date} max={today}>
     {#if checkMaxDate(date)}
@@ -16,6 +16,10 @@
 </div>
 
 <style>
+    .date-switcher {
+        margin-left: -2.5em;
+    }
+
     button {
         background-color: transparent;
         border: none;

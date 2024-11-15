@@ -52,9 +52,7 @@
     {:else if eleringDayPrices}
         <h1>{t.title}</h1>
         <div class="options-bar">
-            <div>
-                <CountrySwitcher bind:country/>
-            </div>
+            <CountrySwitcher bind:country/>
             <DateSwitcher bind:date/>
             <LanguageSwitcher/>
         </div>
@@ -72,6 +70,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         padding-bottom: 1em;
     }
 </style>
