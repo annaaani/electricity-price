@@ -4,28 +4,32 @@
         hours: number
     }
 
-    import Time from './TimeField.svelte'
+    import TimeField from './TimeField.svelte'
     import DeviceSwitcher from './DeviceSwitcher.svelte'
     import DisplayPrice from './DisplayPrice.svelte'
     import CalcStartOption from "./CalcStartOption.svelte";
     import devicesData from '../../assets/devices.json'
+    import PowerField from "./PowerField.svelte";
 
     let timeDevice: string | undefined = $state();
 
     let d: Device | undefined;
     let duration = $state()
+    let watts = $state()
 
     $effect(() => {
         d = (Object(devicesData)[timeDevice!]) as Device;
         if (d) {
             duration = d.hours;
+            watts = d.watts
         }
     })
 </script>
 
 <div class="space"></div>
 <DeviceSwitcher bind:timeDevice/>
-<Time bind:duration/>
+<TimeField bind:duration/>
+<PowerField bind:watts />
 <CalcStartOption/>
 <DisplayPrice/>
 
