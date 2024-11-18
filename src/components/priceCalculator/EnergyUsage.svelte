@@ -35,7 +35,6 @@
 
 <div class="space"></div>
 <DeviceSwitcher bind:timeDevice/>
-<!--TODO: make a new global css file -->
 <TimeField bind:duration/>
 <PowerField bind:watts/>
 <StartTimeField bind:startTime/>
