@@ -10,20 +10,19 @@
         hours: number
     }
 
-    // TODO: change name deviceId
-    let timeDevice: keyof typeof devicesData | undefined = $state();
+    let deviceId: keyof typeof devicesData | undefined = $state();
     let {hourlyPrices} = $props()
 
-    let d: Device | undefined;
+    let devices: Device | undefined;
     let duration: number = $state(0)
     let watts = $state(0)
     let startTime = $state(new Date().getHours() + 1)
 
     $effect(() => {
-        d = devicesData[timeDevice!]
-        if (d) {
-            duration = d.hours;
-            watts = d.watts
+        devices = devicesData[deviceId!]
+        if (devices) {
+            duration = devices.hours;
+            watts = devices.watts
         }
     })
 
@@ -32,7 +31,7 @@
 </script>
 
 <div class="space">
-    <DeviceSwitcher bind:timeDevice/>
+    <DeviceSwitcher bind:deviceId/>
     <UserInput bind:value={duration} label={t.duration} unit={t.hour} minValue={0}
                maxValue={23 - new Date().getHours()}/>
     <UserInput bind:value={watts} label={t.power} unit={t.watt} minValue={0} maxValue={100000}/>

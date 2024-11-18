@@ -13,7 +13,7 @@ describe('EnergyUsage', () => {
 
         // TODO: add numbers tests
         expect(getByText('Laundry machine')).toBeInTheDocument();
-        expect(container.querySelector('.duration')?.textContent).to.eq(' h')
+        expect(container.querySelector('input')?.textContent).to.eq(' h')
         expect(container.querySelector('.startOption')?.textContent).to.eq(' h')
         expect(getByText('W')).toBeInTheDocument();
     });
