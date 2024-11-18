@@ -48,7 +48,6 @@
 <main>
     {#if error}
         <p>{t.error}: {error}</p>
-
     {:else if eleringDayPrices}
         <h1>{t.title}</h1>
         <div class="options-bar">

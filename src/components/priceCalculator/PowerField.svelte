@@ -1,7 +1,6 @@
 <script lang="ts">
     import {t} from '../../i18n'
     let {watts = $bindable()} = $props()
-    // TODO: styling length
 </script>
 
 <label class="input-container">
@@ -26,5 +25,4 @@
         color: #555;
         pointer-events: none;
     }
-
 </style>
