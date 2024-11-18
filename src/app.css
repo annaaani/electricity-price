@@ -66,6 +66,28 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+/* styling for input fields */
+
+.input-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+input[type="number"] {
+    padding: 0.5em;
+}
+
+.unit {
+    position: absolute;
+    right: 2em;
+    color: #555;
+    pointer-events: none;
+}
+
+
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
