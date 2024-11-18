@@ -6,7 +6,7 @@
 
     import TimeField from './TimeField.svelte'
     import DeviceSwitcher from './DeviceSwitcher.svelte'
-    import CalcStartOption from "./CalcStartOption.svelte";
+    import StartTimeField from "./StartTimeField.svelte";
     import devicesData from '../../assets/devices.json'
     import PowerField from "./PowerField.svelte";
     import {t} from "../../i18n"
@@ -38,7 +38,7 @@
 <!--TODO: make a new global css file -->
 <TimeField bind:duration/>
 <PowerField bind:watts/>
-<CalcStartOption bind:startTime/>
+<StartTimeField bind:startTime/>
 <p>{elPrice} {t.units.euro}</p>
 
 <style>
