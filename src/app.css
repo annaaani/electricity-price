@@ -69,16 +69,6 @@ button:focus-visible {
 
 /* styling for input fields */
 
-.input-container {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-}
-
-input[type="number"] {
-    padding: 0.5em;
-}
-
 .space > * {
     padding: 0.3em;
 }

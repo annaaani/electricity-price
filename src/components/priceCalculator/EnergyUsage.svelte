@@ -1,17 +1,16 @@
 <script lang="ts">
+    import UserInput from "./UserInput.svelte";
+    import DeviceSwitcher from './DeviceSwitcher.svelte'
+    import devicesData from '../../assets/devices.json'
+    import {t} from "../../i18n"
+    import {calcElectricityPrice} from "../../utils/calcElectricityPrice";
+
     interface Device {
         watts: number
         hours: number
     }
 
-    import TimeField from './TimeField.svelte'
-    import DeviceSwitcher from './DeviceSwitcher.svelte'
-    import StartTimeField from "./StartTimeField.svelte";
-    import devicesData from '../../assets/devices.json'
-    import PowerField from "./PowerField.svelte";
-    import {t} from "../../i18n"
-    import {calcElectricityPrice} from "../../utils/calcElectricityPrice";
-
+    // TODO: change name deviceId
     let timeDevice: keyof typeof devicesData | undefined = $state();
     let {hourlyPrices} = $props()
 
@@ -34,9 +33,10 @@
 
 <div class="space">
     <DeviceSwitcher bind:timeDevice/>
-    <TimeField bind:duration/>
-    <PowerField bind:watts/>
-    <StartTimeField bind:startTime/>
+    <UserInput bind:value={duration} label={t.duration} unit={t.hour} minValue={0}
+               maxValue={23 - new Date().getHours()}/>
+    <UserInput bind:value={watts} label={t.power} unit={t.watt} minValue={0} maxValue={100000}/>
+    <UserInput bind:value={startTime} label={t.start} unit={t.hour} minValue={startTime} maxValue={23}/>
 </div>
 <p class="price-tag">{t.cost}: {elPrice} {t.units.euro}</p>
 
