@@ -57,8 +57,8 @@
             <LanguageSwitcher/>
         </div>
         {#if hourlyPrices}
-<!--            <Histogram {hourlyPrices} {dailyMax} {date}/>-->
-            <EnergyUsage/>
+            <Histogram {hourlyPrices} {dailyMax} {date}/>
+            <EnergyUsage {hourlyPrices}/>
         {/if}
     {:else}
         <p>{t.loading}</p>

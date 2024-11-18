@@ -1,6 +1,5 @@
 <script lang="ts">
     import {t} from '../../i18n'
-
     let {timeDevice = $bindable()}: { timeDevice: string | undefined } = $props()
 
 </script>

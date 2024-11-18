@@ -1,8 +1,30 @@
 <script lang="ts">
     import {t} from '../../i18n'
-
-    let {startTime = $bindable()} = $props()
+    let {startTime = $bindable <number>(17)} = $props()
 
 </script>
 
-<div>{startTime} : 00</div>
+<label class="input-container">
+    <input type="number" bind:value={startTime} min={String(startTime)} max="23"/>
+    <span class="unit">{t.hour}</span>
+</label>
+
+<style>
+    .input-container {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+    }
+
+    input[type="number"] {
+        padding: 0.5em;
+    }
+
+    .unit {
+        position: absolute;
+        right: 2em;
+        color: #555;
+        pointer-events: none;
+    }
+
+</style>

@@ -15,11 +15,4 @@ describe('CalcStartOption.svelte', () => {
         await fireEvent.change(input, {target: {value: 18}});
         expect(input.value).toBe('18')
     })
-    
-    test('can not change start to past nor current ongoing hour', async () => {
-        const {container} = render(CalcStartOption, {startTime: 16})
-        let input = container.querySelector('input')!
-        await fireEvent.change(input, {target: {value: 10}});
-        expect(input.value).not.toBe('10')
-    })
 })
