@@ -9,6 +9,7 @@
     import CalcStartOption from "./CalcStartOption.svelte";
     import devicesData from '../../assets/devices.json'
     import PowerField from "./PowerField.svelte";
+    import {t} from "../../i18n"
 
     let timeDevice: keyof typeof devicesData | undefined = $state();
     let {hourlyPrices} = $props()
@@ -28,13 +29,10 @@
     })
     function calcElectricityPrice(duration: number, watts: number, startTime: number, hourlyPrices: any) {
         let total = 0;
-        if(duration == undefined){
-            duration = 1
-        }
         for (let i = startTime; i <= startTime+duration; i++) {
-            total +=   (watts / 1000) * hourlyPrices[i]
+            total += ((watts / 1000) * hourlyPrices[i])/1000
         }
-        return total.toFixed(2);
+        return total.toFixed(3);
     }
     let elPrice = $derived(calcElectricityPrice(duration, watts, startTime, hourlyPrices))
 
@@ -46,7 +44,7 @@
 <TimeField bind:duration/>
 <PowerField bind:watts/>
 <CalcStartOption bind:startTime/>
-<p>{elPrice}</p>
+<p>{elPrice} {t.units.euro}</p>
 
 <style>
     .space {

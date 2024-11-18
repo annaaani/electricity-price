@@ -2,7 +2,8 @@
   "title": "Elektrihinnad",
   "units": {
     "cent": "s",
-    "kiloWattHour": "kWh"
+    "kiloWattHour": "kWh",
+    "euro": "€"
   },
   "languageCodes": {
     "en": "English",

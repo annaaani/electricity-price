@@ -2,7 +2,8 @@
   "title": "Electricity prices",
   "units": {
     "cent": "c",
-    "kiloWattHour": "kWh"
+    "kiloWattHour": "kWh",
+    "euro": "€"
   },
   "languageCodes": {
     "en": "English",
