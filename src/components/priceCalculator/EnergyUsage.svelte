@@ -14,7 +14,6 @@
 
     let timeDevice: keyof typeof devicesData | undefined = $state();
     let {hourlyPrices} = $props()
-    //TODO: input field incorrect (min) values overwrite with default
 
     let d: Device | undefined;
     let duration : number = $state(0)

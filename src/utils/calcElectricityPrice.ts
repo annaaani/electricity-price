@@ -1,6 +1,6 @@
 export function calcElectricityPrice(duration: number, watts: number, startTime: number, hourlyPrices: any) {
     let total = 0;
-    if (!hourlyPrices || hourlyPrices.length <= 1) {
+    if (!hourlyPrices || hourlyPrices.length <= 1 || duration <= 0 || startTime < new Date().getHours() + 1 || watts <= 0) {
         return 0;
     }
 

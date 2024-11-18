@@ -1,6 +1,6 @@
 <script lang="ts">
     import {t} from '../../i18n'
-    let {startTime = $bindable <number>(17)} = $props()
+    let {startTime = $bindable <number>()} = $props()
 
 </script>
 
