@@ -5,14 +5,13 @@
 
     let {time, price, dailyMax, date}: { time: number, price: number, dailyMax: number, date: ISODate } = $props()
     const currentHour = new Date().getHours();
-    const isCurrentHour = $derived(time === currentHour);
-    const isToday = $derived(date === today);
+    const isCurrentHour = $derived(time === currentHour && date === today);
 </script>
 
 <div class="bar">
     <div class="bg"
          class:negative={price < 0}
-         class:current-hour={isCurrentHour && isToday}
+         class:current-hour={isCurrentHour}
          style="height: {Math.abs(price / roundUpToNearest5(dailyMax) * 100)}%"></div>
     <p class="hour">{time}</p>
     <p class="price">{price} {t.units.cent}/{t.units.kiloWattHour}</p>

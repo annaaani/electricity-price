@@ -1,5 +1,5 @@
-import {render, waitFor} from '@testing-library/svelte';
-import {describe, expect, test, vi} from 'vitest'
+import {render} from '@testing-library/svelte';
+import {describe, expect, test} from 'vitest'
 import {tick} from "svelte";
 import EnergyUsage from "./EnergyUsage.svelte";
 
@@ -11,12 +11,10 @@ describe('EnergyUsage', () => {
 
         await tick();
 
-        await waitFor(() => {
-            expect(getByText('Laundry machine')).toBeInTheDocument();
-            expect(container.querySelector('.duration')?.textContent).to.eq(' h')
-            expect(container.querySelector('.startOption')?.textContent).to.eq(' h')
-            expect(getByText('W')).toBeInTheDocument();
-        });
+        expect(getByText('Laundry machine')).toBeInTheDocument();
+        expect(container.querySelector('.duration')?.textContent).to.eq(' h')
+        expect(container.querySelector('.startOption')?.textContent).to.eq(' h')
+        expect(getByText('W')).toBeInTheDocument();
     });
 
 })
