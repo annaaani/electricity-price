@@ -3,12 +3,14 @@
     let {timeDevice = $bindable()}: { timeDevice: string | undefined } = $props()
 
 </script>
-
-<select bind:value={timeDevice}>
-    {#each Object.entries(t.devices) as [code, name]}
-        <option value={code}>{name}</option>
-    {/each}
-</select>
+<div>
+    <p>{t.device}</p>
+    <select bind:value={timeDevice}>
+        {#each Object.entries(t.devices) as [code, name]}
+            <option value={code}>{name}</option>
+        {/each}
+    </select>
+</div>
 
 <style>
 

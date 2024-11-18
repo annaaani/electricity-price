@@ -3,7 +3,10 @@
     let {watts = $bindable()} = $props()
 </script>
 
-<label class="input-container">
-    <input type="number" bind:value={watts} min="0"/>
-    <span class="unit">{t.watt}</span>
-</label>
+<div>
+    <p>{t.power}</p>
+    <label class="input-container power">
+        <input type="number" bind:value={watts} min="0" max="100000"/>
+        <span class="unit">{t.watt}</span>
+    </label>
+</div>

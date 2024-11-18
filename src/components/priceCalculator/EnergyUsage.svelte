@@ -16,7 +16,7 @@
     let {hourlyPrices} = $props()
 
     let d: Device | undefined;
-    let duration : number = $state(0)
+    let duration: number = $state(0)
     let watts = $state(0)
     let startTime = $state(new Date().getHours() + 1)
 
@@ -32,15 +32,27 @@
 
 </script>
 
-<div class="space"></div>
-<DeviceSwitcher bind:timeDevice/>
-<TimeField bind:duration/>
-<PowerField bind:watts/>
-<StartTimeField bind:startTime/>
-<p>{elPrice} {t.units.euro}</p>
+<div class="space">
+    <DeviceSwitcher bind:timeDevice/>
+    <TimeField bind:duration/>
+    <PowerField bind:watts/>
+    <StartTimeField bind:startTime/>
+</div>
+<p class="price-tag">{t.cost}: {elPrice} {t.units.euro}</p>
+
 
 <style>
     .space {
-        padding: 2em 0;
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
+
+    .price-tag {
+        text-align: center;
+    }
+
 </style>

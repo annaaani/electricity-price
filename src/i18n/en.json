@@ -17,5 +17,10 @@
     "car": "Car"
   },
   "hour": "h",
-  "watt" : "W"
+  "watt" : "W",
+  "cost": "Cost",
+  "device": "Device",
+  "duration" : "Duration",
+  "power": "Power",
+  "start": "Start time"
 }

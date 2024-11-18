@@ -17,5 +17,10 @@
     "car": "Auto"
   },
   "hour": "t",
-  "watt" : "W"
+  "watt" : "W",
+  "cost": "Maksumus",
+  "device": "Seade",
+  "duration" : "Kestvus",
+  "power": "Võimsus",
+  "start": "Algus aeg"
 }

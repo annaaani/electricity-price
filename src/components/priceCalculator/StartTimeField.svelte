@@ -4,7 +4,10 @@
 
 </script>
 
-<label class="input-container startOption">
-    <input type="number" bind:value={startTime} min={String(startTime)} max="23"/>
-    <span class="unit">{t.hour}</span>
-</label>
+<div>
+    <p>{t.start}</p>
+    <label class="input-container startOption">
+        <input type="number" bind:value={startTime} min={String(startTime)} max="23"/>
+        <span class="unit">{t.hour}</span>
+    </label>
+</div>
